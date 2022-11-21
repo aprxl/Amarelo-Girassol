@@ -28,7 +28,7 @@ framework React. Com sua temática medieval, os duques (jogadores) serão respon
 riquezas e poder para usá-los contra outros jogadores. O vencedor será o último jogador restante e 
 tudo é válido para conquistar esse objetivo: o blefe e a traição serão seus melhores amigos.
 
-### Foco de desenvolvimento
+### Foco de desenvolvimento (development goals)
 
 1. **Jogabilidade**
 
