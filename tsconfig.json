@@ -17,5 +17,5 @@
 
     "include": [
         "./src/**/*"
-    ]
+, "src/server.js", "src/public", "src/public", "usuario.js"    ]
 }
