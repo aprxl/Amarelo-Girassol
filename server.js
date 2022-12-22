@@ -4,6 +4,8 @@ const http = require("http");
 const socketIO = require("socket.io");
 const { usuarioEntrarSala, getUsuariosSala, mensagemFormatada, getUsuario, usuarioSairSala } = require('./usuario');
 
+
+//PORTA DE ENTRADA//
 const app = express();
 const server = http.createServer(app);
 const PORT = 4000;
@@ -12,6 +14,9 @@ const io = socketIO(server);
 
 app.use(express.static(path.join(__dirname, 'src/public')));
 const nomeSala = "sala-Feudo"
+
+
+// DEIXAR ONLINE O BGL//
 
 io.on("connection", socket => {
     socket.on('entrarSala', ({usuarionome, meuid}) => {
