@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>O Feudo</title>
+
+    <style>
+        body{
+            font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif ;
+            background-image: linear-gradient(45deg, rgb(241, 178, 178), rgb(156, 157, 254));
+            overflow: hidden;
+        }
+        .login{
+            background-color: rgba(0, 0, 0, 0);
+            position: absolute;
+            top: 30%;
+            left: 70%;
+            transform: translate(-50%,-70%);
+            padding: 90px;
+            border-radius: 15px;
+            color:rgb(60, 60, 60);
+        }
+        input{
+            padding: 15px;
+            border: none;
+            outline: none;
+            font-size: 15px;
+            border-radius: 15px;
+            color: rgb(60, 60, 60);
+        }
+        button{
+            background-color: rgb(90, 88, 88);
+            border: none;
+            padding: 15px;
+            width: 100%;
+            border-radius: 10px;
+            color:rgb(245, 236, 240);
+            font-size: 15px;
+        }
+        button:hover{
+            background-color: rgb(251, 186, 230);
+            cursor:  pointer;
+        }
+
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body{
+            display: flex;
+            justify-content: left;
+            padding-left: 155px;
+            padding-top: 490px;
+            align-items: center;
+            min-height: 50vh;
+        }
+        .container{
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            max-width: 1200px;
+            flex-wrap: wrap;
+            z-index: 1;
+            
+        }
+        .container .card{
+            position: relative;
+            width: 280px;
+            height: -500px;
+            margin: -25px;
+            box-shadow: 20px 20px 50 px rgba(0, 0, 0, 0.5);
+            border-radius: 15px;
+            background: rgba(49, 47, 47, 0.8);
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: top;
+            border-top: 3px solid rgba(169, 169, 169, 0.5);
+            border-right: 3px solid rgba(169, 169, 169, 0.5);
+            rotate: -15deg;
+            
+        }
+        .container .card .content{
+            padding: 20px;
+            text-align: center;
+            transform: translateY(100px);
+            opacity: 0;
+            transition: 0.5;
+        }
+        .container .card:hover .content{
+            transform: translateY(0px);
+            opacity: 1;
+        }
+        .container .card .content h2{
+            top: -80px;
+            right: 30px;
+            font-size: 4em;
+            color: rgba(251, 249, 249, 0.05);
+            pointer-events: none;
+        }
+        .container .card .content h3{
+            font-size: 1.8em;
+            color: white;
+            z-index: 1;
+        }
+        .container .card .content p{
+            font-size: 1em;
+            color: white;
+            font-weight: 300;
+
+        }
+        .container .card .content a{
+            position: relative;
+            display: inline-block;
+            padding: 8px 20px;
+            margin-top: 15px;
+            background: white;
+            color: rgb(78, 6, 31);
+            text-decoration: none;
+            border-radius: 20px;
+            font-weight: 500;
+            box-shadow: 0 5px 15px rgba(103, 101, 101, 0.2);
+        }
+        .bs{
+            transform: translate(635px,-400px);
+
+        }
+
+    </style>
+
+</head>
+<body> 
+    <div class="bs">
+        <img src="Ilustração_Sem_Título.png" alt="msdbksdb" width="570px">
+    </div>
+    <div class="login">
+        <h1>O FEUDO</h1>
+        <h2>Comece a Jogar:</h2>
+        <div class="mb-3 input-entrar">
+            <label for="exampleFormControlInput1" class="form-label">Insera seu nick</label>
+            <input type="text" class="form-control" id="nome" placeholder="insira seu nick aqui">
+        </div>
+        <br><br>
+        <button onclick="btnEntrar()" type="button" id="btnEntrar" class="btn btn-success">Entrar no jogo</button>
+    </div>
+
+    <div class="container">
+        <div class="card">
+            <div class="content">
+                <h2>01</h2>
+                <h3>Personagens</h3>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Rem aspernatur nisi facilis soluta beatae iusto, sunt id voluptatibus corrupti, quis error voluptatum velit laborum assumenda nobis quibusdam? Quia, perferendis quibusdam.</p>
+                <a href="#">Clique para saber mais!</a>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="content">
+                <h2>02</h2>
+                <h3>Regras do Jogo</h3>
+                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quod repudiandae numquam labore, sapiente eligendi reprehenderit. Possimus, ullam assumenda. Dicta, dolore consectetur culpa deserunt numquam voluptatibus neque doloribus libero quidem cupiditate?</p>
+                <a href="#">Clique para saber mais!</a>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript" src="vanilla-tilt.js"></script>
+    <script>VanillaTilt.init(document.querySelectorAll(".card"), {
+        max: 25,
+        speed: 400,
+        glare: true,
+        "max-glare": 1,
+    });
+    </script>
+</body>
+</html>
