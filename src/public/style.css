@@ -279,3 +279,4 @@ body{
         overflow-x: auto
     }
 }
+<button onclick="btnEntrar()" type="button" id="btnEntrar" class="btn btn-success">Entrar no jogo</button>
