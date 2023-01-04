@@ -3,19 +3,28 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-
-    <title>O Feudo</title>
-<!--COLOCAR A LOGO DO JOGO AQUI -->
-    <link rel = "website icon" type = "png"
-    href ="https://img.olhardigital.com.br/wp-content/uploads/2017/06/20170608022313.png">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
-    <script src="./index.js"></script>
-    <link href="./style.css" rel="stylesheet" />
+<!-- AQUI ESTAMOS ESTILIZANDO O CABEÇALHO -->
+    <title>O Feudo</title>
+    <link   rel = "website icon" 
+            type = "png"
+            href ="Imagens/Vector (1).png">
 
+<!-- AQUI ESTOU PEDINDO OS COMANDOS PARA FUNCIONAR ONLINE -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <link   href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" 
+            rel="stylesheet" 
+            integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" 
+            crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" 
+            crossorigin="anonymous"></script>
+    <script src="./index.js"></script>
+    <link   href="./style.css"
+            rel="stylesheet" />
+
+<!-- AQUI ESTAMOS ESTILIZANDO COM CSS -->
     <style>
         body{
             font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif ;
@@ -25,18 +34,18 @@
         .login{
             background-color: rgba(0, 0, 0, 0);
             position: absolute;
-            top: 30%;
-            left: 70%;
+            top: 50%;
+            left: 60%;
             transform: translate(-50%,-70%);
             padding: 90px;
             border-radius: 15px;
-            color:rgb(60, 60, 60);
+            color:rgb(237, 237, 251);
         }
         input{
-            padding: 15px;
+            padding: 25px;
             border: none;
             outline: none;
-            font-size: 15px;
+            font-size: 20px;
             border-radius: 15px;
             color: rgb(60, 60, 60);
         }
@@ -53,7 +62,6 @@
             background-color: rgb(251, 186, 230);
             cursor:  pointer;
         }
-
         *{
             margin: 0;
             padding: 0;
@@ -69,7 +77,7 @@
             min-height: 50vh;
         }
         .container{
-            position: relative;
+            position: absolute;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -79,11 +87,11 @@
             
         }
         .container .card{
-            position: relative;
+            position: absolute;
             width: 280px;
-            height: -500px;
+            height: -400px;
             margin: -25px;
-            box-shadow: 20px 20px 50 px rgba(0, 0, 0, 0.5);
+            box-shadow: 20px 20px 50px rgba(0, 0, 0, 0.5);
             border-radius: 15px;
             background: rgba(49, 47, 47, 0.8);
             overflow: hidden;
@@ -93,6 +101,9 @@
             border-top: 3px solid rgba(169, 169, 169, 0.5);
             border-right: 3px solid rgba(169, 169, 169, 0.5);
             rotate: -15deg;
+            top: 30%;
+            right: 40%;
+
             
         }
         .container .card .content{
@@ -109,12 +120,13 @@
         .container .card .content h2{
             top: -80px;
             right: 30px;
-            font-size: 4em;
+            font-size: 3em;
             color: rgba(251, 249, 249, 0.05);
             pointer-events: none;
+            align-items: center;
         }
         .container .card .content h3{
-            font-size: 1.8em;
+            font-size: 1.9em;
             color: white;
             z-index: 1;
         }
@@ -127,18 +139,17 @@
         .container .card .content a{
             position: relative;
             display: inline-block;
-            padding: 8px 20px;
+            padding: 8px 70px;
             margin-top: 15px;
             background: white;
             color: rgb(78, 6, 31);
             text-decoration: none;
-            border-radius: 20px;
-            font-weight: 500;
+            border-radius: 10px;
+            font-weight: 300;
             box-shadow: 0 5px 15px rgba(103, 101, 101, 0.2);
         }
         .bs{
-            transform: translate(635px,-400px);
-
+            transform: translate(28cm,-11cm);
         }
 
     </style>
@@ -146,9 +157,15 @@
 </head>
 
 <body> 
+
+<!-- AQUI COLOCAMOS A LOGO -->
     <div class="bs">
-        <img src="Ilustração_Sem_Título.png" alt="msdbksdb" width="570px">
+        <img    src="Imagens/Ilustração_Sem_Título.png" 
+                alt="msdbksdb" 
+                width="570px">
     </div>
+
+<!-- AQUI ENTRAMOS NO JOGO -->
     <div class="login">
         <h1>O FEUDO</h1>
         <h2>Comece a Jogar:</h2>
@@ -160,6 +177,7 @@
         <button onclick="btnEntrar()" type="button" id="btnEntrar" class="btn btn-success">Entrar no jogo</button>
     </div>
 
+<!-- AQUI COLOCAMOS AS CARTAS -->
     <div class="container">
         <div class="card">
             <div class="content">
@@ -179,7 +197,9 @@
             </div>
         </div>
     </div>
-    <script type="text/javascript" src="vanilla-tilt.js"></script>
+
+<!-- AQUI ESTÁ OS CODIGOS PARA A MOVIMENTAÇAO DA CARTA -->
+    <script type="text/javascript" src="cartamenu.js"></script>
     <script>VanillaTilt.init(document.querySelectorAll(".card"), {
         max: 25,
         speed: 400,
