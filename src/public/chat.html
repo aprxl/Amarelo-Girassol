@@ -19,26 +19,30 @@
 </head>
 
 <body>
+    <nav>
+        <div class="logo"> O Feudo </div>
+
+        <div class="menu-btn">
+            <i class="fa fa-bars fa-2x" onclick="menuShow()"></i>
+        </div>
+
+        <ul>
+            <li> <a href="#"> Patacas </a> </li>
+            <li> <a href="#"> Cartas</a> </li>
+            <li> <a href="#"> Regras</a> </li>
+            <li> <a href="#"> Jogadores</a> </li>
+            <li> <a href="#" class="bbtn btn-primary" id="btnSair">Sair</li>
+        </ul>
+    </nav>
+
     <div class="container">
         <div class="row clearfix">
             <div class="col-lg-12">
                 <div class="card chat-app">
-                    <div id="plist" class="people-list">
-                        <ul class="list-unstyled chat-list mt-2 mb-0" id="listaUsuarios">
-
-                        </ul>
-                    </div>
                     <div class="chat" id="chat">
                         <div class="chat-header clearfix">
                             <div class="row">
-                                <div class="col-lg-6">
-                                    <div class="chat-about">
-                                        <h6 class="m-b-0" id="salaId">SALA</h6>
-                                    </div>
-                                   
-                                </div>
-                                <div class="col-lg-6 btnSair">
-                                    <button class="btn btn-primary " id="btnSair">Sair</button>
+                                <div class="col-lg-6">  
                                 </div>
                             </div>
                         </div>
@@ -60,6 +64,8 @@
             </div>
         </div>
     </div>
+    
+
 
 <!-- DEPENDENCIAS -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/qs/6.9.2/qs.min.js" 
@@ -67,7 +73,7 @@
             crossorigin="anonymous"></script>
     <script src="/socket.io/socket.io.js"></script>
     <script src="./site.js"></script>
-    
+    <script src="interativide.js"></script>
 </body>
 
 </html>
