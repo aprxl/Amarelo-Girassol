@@ -88,18 +88,21 @@ body{
     background-image: linear-gradient(45deg, rgb(241, 178, 178), rgb(156, 157, 254));
 }
 
+
 .card {
-    height: 700px;
+    height: 670px;
     background: #fff;
     transition: .5s;
     border: 0;
     margin-bottom: 30px;
     border-radius: .55rem;
-    position: relative;
+    position: absolute;
     width: 35%;
     box-shadow: 0 1px 2px 0 rgb(0 0 0 / 10%);
-    top: 1%;
-    left: 75%;
+    top: 11%;
+    left: 63%;
+    display: none;
+
 }
 
 .btnSair {
@@ -298,4 +301,3 @@ body{
         overflow-x: auto
     }
 }
-
