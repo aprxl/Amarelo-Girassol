@@ -88,24 +88,28 @@
             
         }
         .container .card{
-            position: absolute;
-            width: 280px;
-            height: -400px;
+/* TAMANHO DAS CARTAS */
+            position: relative;
+            width: 320px;
+            height: 550px;
+
             margin: -25px;
             box-shadow: 20px 20px 50px rgba(0, 0, 0, 0.5);
             border-radius: 15px;
             background: rgba(49, 47, 47, 0.8);
+
+/* POSIÇAO DOS DESCENDENTES DA CARTA (ESCRITAS...) */
             overflow: hidden;
             display: flex;
             justify-content: center;
             align-items: top;
             border-top: 3px solid rgba(169, 169, 169, 0.5);
             border-right: 3px solid rgba(169, 169, 169, 0.5);
-            rotate: -15deg;
-            top: 30%;
-            right: 40%;
 
-            
+/* POSIÇAO DAS CARTAS */
+            rotate: -15deg;
+            left: -20%; 
+    
         }
         .container .card .content{
             padding: 20px;
@@ -150,6 +154,8 @@
             box-shadow: 0 5px 15px rgba(103, 101, 101, 0.2);
         }
         .bs{
+
+/* COLOCAR A RESPONSATIVIDADE DA LOGO */
             transform: translate(28cm,-11cm);
         }
 
@@ -160,7 +166,7 @@
 <body> 
 
 <!-- AQUI COLOCAMOS A LOGO -->
-    <div class="bs">
+    <div class="bs" id="bs">
         <img    src="Imagens/Ilustração_Sem_Título.png" 
                 alt="msdbksdb" 
                 width="570px">
