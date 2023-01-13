@@ -24,8 +24,8 @@ body{
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    background-color: rgb(249, 204, 238);
     overflow: hidden;
+    background-image: linear-gradient(45deg, rgb(199, 75, 75), rgb(254, 228, 125));
 
 }
 
@@ -48,60 +48,98 @@ body{
     margin: 15px;
     box-shadow: 20px 20px 50px rgba(48, 21, 54, 0.3);
     border-radius: 15px;
-    background-color: rgb(57, 16, 59);
+    background-color: rgb(113, 1, 1);
     display: flex;
     align-items: center;
     justify-content: center;
     border-top: 1px solid rgba(119, 163, 240, 0.7);
     border-left: 1px solid rgba(119, 163, 240, 0.7);
     overflow: hidden;
-    text-decoration-color: rgb(247, 233, 248);
+    text-decoration-color: rgb(248, 233, 233);
 }
 
 .container .card h2{
-    color: rgb(214, 213, 255);
+    color: rgb(255, 210, 147);
     position: absolute;
     pointer-events: none;
     font-size: 2.5em;
     text-align: center;
 }
-
+.cartamonarca{
+    position: absolute;
+    left: 50px;
+    top: 75px;
+}
+.regramonarca{
+    position: absolute;
+    right: 50px;
+    top: 75px;
+}
 </style>
 
 <body>
     <div class="container">
-        <img src="Imagens/Ilustração_Sem_Título.png" alt="brasão" width="10%">
+        <img src="Imagens/Ilustração_Sem_Título.png" alt="brasão" width="12%">
 
         <div class="card" id="seletor1">
                 <h2>BOBO DA CORTE</h2>   
         </div>
 
         <div class="card_teste" id="regra1" style="display: none">
-            <h2>Teste</h2>   
+            <img class="cartamonarca" src="Imagens/testemonarca.jpg">
+            <img class="regramonarca" src="Imagens/Boba.png" width="21%">  
         </div>
 
-        <div class="card">
+        <div class="card" id="seletor2">
                 <h2>CAVALEIRO</h2>
         </div>
 
-        <div class="card">
+        <div class="card_teste2" id="regra2" style="display: none">
+            <img class="cartamonarca" src="Imagens/testemonarca.jpg">
+            <img class="regramonarca" src="Imagens/Boba.png" width="21%">
+        </div>    
+
+        <div class="card" id="seletor3">
                 <h2>CONSELHEIRO</h2>
         </div>
 
-        <div class="card">
+        <div class="card_teste3" id="regra3" style="display: none">
+            <img class="cartamonarca" src="Imagens/testemonarca.jpg">
+            <img class="regramonarca" src="Imagens/Boba.png" width="21%">
+        </div> 
+
+        <div class="card" id="seletor4">
                 <h2>DUQUE</h2>
         </div>
 
-        <div class="card">
+        <div class="card_teste4" id="regra4" style="display: none">
+            <img class="cartamonarca" src="Imagens/testemonarca.jpg">
+            <img class="regramonarca" src="Imagens/Boba.png" width="21%">
+        </div>
+
+        <div class="card" id="seletor5">
                 <h2>EREMITA</h2>
         </div>
 
-        <div class="card">
-                <h2>ESCRIBA</h2>
+        <div class="card_teste5" id="regra5" style="display: none">
+            <img class="cartamonarca" src="Imagens/testemonarca.jpg">
+            <img class="regramonarca" src="Imagens/Boba.png" width="21%">
         </div>
 
-        <div class="card">
+        <div class="card" id="seletor6">
+                <h2>ESCRIBA</h2>
+        </div>
+        <div class="card_teste6" id="regra6" style="display: none">
+            <img class="cartamonarca" src="Imagens/testemonarca.jpg">
+            <img class="regramonarca" src="Imagens/Boba.png" width="21%">
+        </div>
+
+        <div class="card" id="seletor7">
                 <h2>MONARCA</h2>
+        </div>
+        <div class="card_teste7" id="regra7" style="display: none">
+            <img class="cartamonarca" src="Imagens/testemonarca.jpg">
+            <img class="regramonarca" src="Imagens/Boba.png" width="21%">
         </div>
 
     </div>
@@ -123,12 +161,64 @@ body{
             "mouseover",
             function showElement() {document.getElementById("regra1").style.display = "block";}
             );
-
             document.getElementById("seletor1").addEventListener(
             "mouseout",
             function hideElement() {document.getElementById("regra1").style.display = "none";}
             );
 
+            document.getElementById("seletor2").addEventListener(
+            "mouseover",
+            function showElement() {document.getElementById("regra2").style.display = "block";}
+            );
+            document.getElementById("seletor2").addEventListener(
+            "mouseout",
+            function hideElement() {document.getElementById("regra2").style.display = "none";}
+            );
+
+            document.getElementById("seletor3").addEventListener(
+            "mouseover",
+            function showElement() {document.getElementById("regra3").style.display = "block";}
+            );
+            document.getElementById("seletor3").addEventListener(
+            "mouseout",
+            function hideElement() {document.getElementById("regra3").style.display = "none";}
+            );
+
+            document.getElementById("seletor4").addEventListener(
+            "mouseover",
+            function showElement() {document.getElementById("regra4").style.display = "block";}
+            );
+            document.getElementById("seletor4").addEventListener(
+            "mouseout",
+            function hideElement() {document.getElementById("regra4").style.display = "none";}
+            );
+
+            document.getElementById("seletor5").addEventListener(
+            "mouseover",
+            function showElement() {document.getElementById("regra5").style.display = "block";}
+            );
+            document.getElementById("seletor5").addEventListener(
+            "mouseout",
+            function hideElement() {document.getElementById("regra5").style.display = "none";}
+            );
+
+            document.getElementById("seletor6").addEventListener(
+            "mouseover",
+            function showElement() {document.getElementById("regra6").style.display = "block";}
+            );
+            document.getElementById("seletor6").addEventListener(
+            "mouseout",
+            function hideElement() {document.getElementById("regra6").style.display = "none";}
+            );
+
+            document.getElementById("seletor7").addEventListener(
+            "mouseover",
+            function showElement() {document.getElementById("regra7").style.display = "block";}
+            );
+            document.getElementById("seletor7").addEventListener(
+            "mouseout",
+            function hideElement() {document.getElementById("regra7").style.display = "none";}
+            );
 
     </script>
 </body>

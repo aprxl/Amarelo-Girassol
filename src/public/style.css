@@ -7,16 +7,16 @@
 }
 nav{
     display: flex;
-    height: 80px;
+    height: 65px;
     width: 100%;
-    background-color: #0c0f0f;
+    background-color: #ffc35b;
     align-items: center;
     justify-content: space-between;
     padding: 0 50px 0 100px;
     flex-wrap: wrap;
 }
 nav .logo{
-    color: white;
+    color: rgb(255, 255, 255);
     font-size: 35px;
     font-weight: 600;
 }
@@ -31,7 +31,7 @@ nav ul li{
 }
 
 nav ul li a{
-    color: #f2f2f2;
+    color: #fffdfd;
     text-decoration: none;
     font-size: 18px;
     font-weight: 500;
@@ -39,14 +39,16 @@ nav ul li a{
     border-radius: 5px;
     letter-spacing: 1px;
     transition: all 0.3s ease;
+    align-items: center;
+    text-align: center;
 }
 nav ul li a.active,
 nav ul li a:hover{
-    background: #f88f06;
+    background: #ffb452;
 }
 
 nav .menu-btn i{
-    color: #fff;
+    color: rgb(211, 68, 68);
     cursor: pointer;
     display: none;
 }
@@ -78,20 +80,20 @@ nav .menu-btn i{
     nav ul li a.active,
     nav ul li a:hover{
         background: none;
-        color: #f88f06;
+        color: #eab7fe;
     }   
 }
 
 /* ESTILIZANDO O CHAT */
 
 body{
-    background-image: linear-gradient(45deg, rgb(241, 178, 178), rgb(156, 157, 254));
+    background-image: linear-gradient(45deg, rgb(255, 231, 133), rgb(237, 141, 39));
 }
 
 
 .card {
     height: 670px;
-    background: #fff;
+    background: rgb(255, 255, 255);
     transition: .5s;
     border: 0;
     margin-bottom: 30px;
