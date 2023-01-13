@@ -12,7 +12,13 @@
         "sourceMap": true,
 
         // Especificar o diretório de saída da transpilação do Typescript.
-        "outDir": "./dist/"
+        "outDir": "./dist/",
+
+        "esModuleInterop": true
+    },
+
+    "ts-node": {
+        "esm": true
     },
 
     "include": [
