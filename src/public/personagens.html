@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link   rel = "website icon" 
+            type = "png"
+            href ="Imagens/Vector (1).png">
+    <title>Sobre os Personagens</title>
+    <link rel="stylesheet" href="index.js">
+</head>
+
+<style>
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family:monospace
+}
+
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: rgb(249, 204, 238);
+    overflow: hidden;
+
+}
+
+.container{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    max-width: 1200px;
+    flex-wrap:wrap;
+    z-index: 1;
+    flex-direction: column;
+    
+}
+
+.container .card{
+    position:relative;
+    width: 300px;
+    height: 50px;
+    margin: 15px;
+    box-shadow: 20px 20px 50px rgba(48, 21, 54, 0.3);
+    border-radius: 15px;
+    background-color: rgb(57, 16, 59);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-top: 1px solid rgba(119, 163, 240, 0.7);
+    border-left: 1px solid rgba(119, 163, 240, 0.7);
+    overflow: hidden;
+    text-decoration-color: rgb(247, 233, 248);
+}
+
+.container .card h2{
+    color: rgb(214, 213, 255);
+    position: absolute;
+    pointer-events: none;
+    font-size: 2.5em;
+    text-align: center;
+}
+
+</style>
+
+<body>
+    <div class="container">
+        <img src="Imagens/Ilustração_Sem_Título.png" alt="brasão" width="10%">
+
+        <div class="card" id="seletor1">
+                <h2>BOBO DA CORTE</h2>   
+        </div>
+
+        <div class="card_teste" id="regra1" style="display: none">
+            <h2>Teste</h2>   
+        </div>
+
+        <div class="card">
+                <h2>CAVALEIRO</h2>
+        </div>
+
+        <div class="card">
+                <h2>CONSELHEIRO</h2>
+        </div>
+
+        <div class="card">
+                <h2>DUQUE</h2>
+        </div>
+
+        <div class="card">
+                <h2>EREMITA</h2>
+        </div>
+
+        <div class="card">
+                <h2>ESCRIBA</h2>
+        </div>
+
+        <div class="card">
+                <h2>MONARCA</h2>
+        </div>
+
+    </div>
+
+    <script type="text/javascript" src="vanilla-tilt.min.js"></script>
+    <script>
+    
+        VanillaTilt.init(document.querySelectorAll(".card"), {
+            max: 25,
+            speed: 400,
+            glare: true,
+            "max-glare": 1,
+        });
+
+    </script>
+    <script type="text/javascript">
+
+            document.getElementById("seletor1").addEventListener(
+            "mouseover",
+            function showElement() {document.getElementById("regra1").style.display = "block";}
+            );
+
+            document.getElementById("seletor1").addEventListener(
+            "mouseout",
+            function hideElement() {document.getElementById("regra1").style.display = "none";}
+            );
+
+
+    </script>
+</body>
+</html>

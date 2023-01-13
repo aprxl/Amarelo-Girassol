@@ -10,7 +10,6 @@
     <link   rel = "website icon" 
             type = "png"
             href ="Imagens/Vector (1).png">
-
 <!-- AQUI ESTOU PEDINDO OS COMANDOS PARA FUNCIONAR ONLINE -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <link   href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" 
@@ -30,20 +29,34 @@
             font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif ;
             background-image: linear-gradient(45deg, rgb(241, 178, 178), rgb(156, 157, 254));
             overflow: hidden;
+            height: 100%;
+            width: 100%;
+            background-size: cover;
+            background-repeat: no-repeat;
         }
         .login{
+            float: left;
             text-align: center;
             background-color: rgba(0, 0, 0, 0);
-            position: absolute;
-            top: 50%;
-            left: 60%;
-            transform: translate(-50%,-70%);
-            padding: 90px;
+            position: relative;
+            left: 45.3%;
+            margin-top: 16%;
             border-radius: 15px;
             color:rgb(237, 237, 251);
         }
+
+        #nome{
+            width: 100%;
+            align-self: center;
+        }
+
+        #btnEntrar{
+            margin-top: -30%;
+        }
+
         input{
-            padding: 25px;
+            padding-top: 25px;
+            text-align: center;
             border: none;
             outline: none;
             font-size: 20px;
@@ -53,7 +66,7 @@
         button{
             background-color: rgb(90, 88, 88);
             border: none;
-            padding: 15px;
+            padding: 0px;
             width: 100%;
             border-radius: 10px;
             color:rgb(245, 236, 240);
@@ -63,32 +76,32 @@
             background-color: rgb(251, 186, 230);
             cursor:  pointer;
         }
+        
         *{
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
 
-        body{
-            display: flex;
-            justify-content: left;
-            padding-left: 155px;
-            padding-top: 490px;
-            align-items: center;
-            min-height: 50vh;
+        .linkCard{
+            visibility: visible;
+            text-decoration-color: rgba(0, 0, 0, 0);
         }
+
         .container{
-            position: absolute;
+            position: relative;
             display: flex;
-            justify-content: center;
             align-items: center;
-            max-width: 1200px;
+            max-width: 1000px;
             flex-wrap: wrap;
             z-index: 1;
-            
+            bottom: 30vh;
+            left: -20vh
         }
+
         .container .card{
-            position: absolute;
+            position: relative;
+            float: left;
             width: 280px;
             height: -400px;
             margin: -25px;
@@ -102,13 +115,13 @@
             border-top: 3px solid rgba(169, 169, 169, 0.5);
             border-right: 3px solid rgba(169, 169, 169, 0.5);
             rotate: -15deg;
-            top: 30%;
-            right: 40%;
-
-            
+            top: 20%;
+            left: 20%;
         }
+
         .container .card .content{
-            padding: 20px;
+            padding-left: 20px;
+            padding-right: 20px;
             text-align: center;
             transform: translateY(100px);
             opacity: 0;
@@ -119,7 +132,7 @@
             opacity: 1;
         }
         .container .card .content h2{
-            top: -80px;
+            margin-top: -20%;
             right: 30px;
             font-size: 3em;
             color: rgba(251, 249, 249, 0.05);
@@ -150,7 +163,9 @@
             box-shadow: 0 5px 15px rgba(103, 101, 101, 0.2);
         }
         .bs{
-            transform: translate(28cm,-11cm);
+            position: relative;
+            float: right;
+
         }
 
     </style>
@@ -162,11 +177,13 @@
 <!-- AQUI COLOCAMOS A LOGO -->
     <div class="bs">
         <img    src="Imagens/Ilustração_Sem_Título.png" 
-                alt="msdbksdb" 
-                width="570px">
+                width="650vw"
+                height="auto"
+                style="margin-top: 5%; overflow: hidden; margin-left: 8%;">
     </div>
 
 <!-- AQUI ENTRAMOS NO JOGO -->
+
     <div class="login">
         <h1>O FEUDO</h1>
         <h2>Comece a Jogar</h2>
@@ -178,25 +195,27 @@
     </div>
 
 <!-- AQUI COLOCAMOS AS CARTAS -->
-    <div class="container">
-        <div class="card">
-            <div class="content">
-                <h2>01</h2>
-                <h3>Personagens</h3>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Rem aspernatur nisi facilis soluta beatae iusto, sunt id voluptatibus corrupti, quis error voluptatum velit laborum assumenda nobis quibusdam? Quia, perferendis quibusdam.</p>
-                <a href="#">Clique para saber mais!</a>
+    <a class="linkCard" href="personagens.html">  
+        <div class="container">
+            <div class="card">
+                <div class="content">
+                    <h2>01</h2>
+                    <h3>Personagens</h3>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Rem aspernatur nisi facilis soluta beatae iusto, sunt id voluptatibus corrupti, quis error voluptatum velit laborum assumenda nobis quibusdam? Quia, perferendis quibusdam.</p>
+                </div>
             </div>
-        </div>
+    </a>
 
-        <div class="card">
-            <div class="content">
-                <h2>02</h2>
-                <h3>Regras do Jogo</h3>
-                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quod repudiandae numquam labore, sapiente eligendi reprehenderit. Possimus, ullam assumenda. Dicta, dolore consectetur culpa deserunt numquam voluptatibus neque doloribus libero quidem cupiditate?</p>
-                <a href="#">Clique para saber mais!</a>
+    <a class="linkCard" href="regras.html">
+            <div class="card">
+                <div class="content">
+                    <h2>02</h2>
+                    <h3>Regras do Jogo</h3>
+                    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quod repudiandae numquam labore, sapiente eligendi reprehenderit. Possimus, ullam assumenda. Dicta, dolore consectetur culpa deserunt numquam voluptatibus neque doloribus libero quidem cupiditate?</p>
+                </div>
             </div>
         </div>
-    </div>
+    </a>
 
 <!-- AQUI ESTÁ OS CODIGOS PARA A MOVIMENTAÇAO DA CARTA -->
     <script type="text/javascript" src="cartamenu.js"></script>
