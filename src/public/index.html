@@ -10,7 +10,6 @@
     <link   rel = "website icon" 
             type = "png"
             href ="Imagens/Vector (1).png">
-
 <!-- AQUI ESTOU PEDINDO OS COMANDOS PARA FUNCIONAR ONLINE -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <link   href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" 
@@ -32,20 +31,22 @@
             overflow: hidden;
             height: 100%;
             width: 100%;
+            background-size: cover;
+            background-repeat: no-repeat;
         }
         .login{
+            float: left;
             text-align: center;
             background-color: rgba(0, 0, 0, 0);
-            position: absolute;
-            top: 50%;
-            left: 60%;
-            transform: translate(-50%,-70%);
-            padding: 90px;
+            position: relative;
+            left: 45.3%;
+            margin-top: 16%;
             border-radius: 15px;
             color:rgb(253, 252, 255);
         }
         input{
-            padding: 25px;
+            padding-top: 25px;
+            text-align: center;
             border: none;
             outline: none;
             font-size: 20px;
@@ -55,7 +56,6 @@
         button{
             background-color: rgb(90, 88, 88);
             border: none;
-            padding: 15px;
             width: 100%;
             border-radius: 10px;
             color:rgb(245, 236, 240);
@@ -65,56 +65,52 @@
             background-color: rgb(251, 186, 230);
             cursor:  pointer;
         }
+        
         *{
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
 
-        body{
-            display: flex;
-            justify-content: left;
-            padding-left: 155px;
-            padding-top: 490px;
-            align-items: center;
-            min-height: 50vh;
+        .linkCard{
+            visibility: visible;
+            text-decoration-color: rgba(0, 0, 0, 0);
         }
+
         .container{
-            position: absolute;
+            position: relative;
             display: flex;
-            justify-content: center;
             align-items: center;
-            max-width: 1200px;
+            max-width: 1000px;
             flex-wrap: wrap;
             z-index: 1;
-            
+            bottom: 30vh;
+            left: -7vh
         }
-        .container .card{
-/* TAMANHO DAS CARTAS */
-            position: relative;
-            width: 320px;
-            height: 550px;
 
+        .container .card{
+            position: relative;
+            float: left;
+            width: 280px;
+            height: -400px;
             margin: -25px;
             box-shadow: 20px 20px 50px rgba(0, 0, 0, 0.5);
             border-radius: 15px;
             background: rgba(49, 47, 47, 0.8);
-
-/* POSIÇAO DOS DESCENDENTES DA CARTA (ESCRITAS...) */
             overflow: hidden;
             display: flex;
-            justify-content: center;
+            justify-content: top;
             align-items: top;
             border-top: 3px solid rgba(169, 169, 169, 0.5);
             border-right: 3px solid rgba(169, 169, 169, 0.5);
-
-/* POSIÇAO DAS CARTAS */
             rotate: -15deg;
-            left: -20%; 
-    
+            top: 20%;
+            left: 20%;
         }
+
         .container .card .content{
-            padding: 20px;
+            padding-left: 20px;
+            padding-right: 20px;
             text-align: center;
             transform: translateY(100px);
             opacity: 0;
@@ -125,7 +121,7 @@
             opacity: 1;
         }
         .container .card .content h2{
-            top: -80px;
+            margin-top: -20%;
             right: 30px;
             font-size: 3em;
             color: rgba(251, 249, 249, 0.05);
@@ -138,7 +134,7 @@
             z-index: 1;
         }
         .container .card .content p{
-            font-size: 1em;
+            font-size: 1.2em;
             color: white;
             font-weight: 300;
 
@@ -156,9 +152,9 @@
             box-shadow: 0 5px 15px rgba(103, 101, 101, 0.2);
         }
         .bs{
+            position: relative;
+            float: right;
 
-/* COLOCAR A RESPONSATIVIDADE DA LOGO */
-            transform: translate(28cm,-11cm);
         }
 
     </style>
@@ -168,13 +164,15 @@
 <body> 
 
 <!-- AQUI COLOCAMOS A LOGO -->
-    <div class="bs" id="bs">
+    <div class="bs">
         <img    src="Imagens/Ilustração_Sem_Título.png" 
-                alt="msdbksdb" 
-                width="570px">
+                width="650vw"
+                height="auto"
+                style="margin-top: 5%; overflow: hidden; margin-left: 8%;">
     </div>
 
 <!-- AQUI ENTRAMOS NO JOGO -->
+
     <div class="login">
         <h1>O FEUDO</h1>
         <h2>Comece a Jogar</h2>
@@ -186,25 +184,27 @@
     </div>
 
 <!-- AQUI COLOCAMOS AS CARTAS -->
-    <div class="container">
-        <div class="card">
-            <div class="content">
-                <h2>01</h2>
-                <h3>Personagens</h3>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Rem aspernatur nisi facilis soluta beatae iusto, sunt id voluptatibus corrupti, quis error voluptatum velit laborum assumenda nobis quibusdam? Quia, perferendis quibusdam.</p>
-                <a href="#">Clique para saber mais!</a>
+    <a class="linkCard" href="personagens.html">  
+        <div class="container">
+            <div class="card">
+                <div class="content">
+                    <h2>01</h2>
+                    <h3>Personagens</h3>
+                    <p>Conheça os habitantes do Feudo Amarelo Girassol e suas bravuras juntamente seus pecados!</p>
+                </div>
             </div>
-        </div>
+    </a>
 
-        <div class="card">
-            <div class="content">
-                <h2>02</h2>
-                <h3>Regras do Jogo</h3>
-                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quod repudiandae numquam labore, sapiente eligendi reprehenderit. Possimus, ullam assumenda. Dicta, dolore consectetur culpa deserunt numquam voluptatibus neque doloribus libero quidem cupiditate?</p>
-                <a href="#">Clique para saber mais!</a>
+    <a class="linkCard" href="regras.html">
+            <div class="card">
+                <div class="content">
+                    <h2>02</h2>
+                    <h3>Regras do Jogo</h3>
+                    <p> Neste feudo todos têm segundas intenções. Cada habitante possui uma motivação de ganhar. Venha saber como!</p>
+                </div>
             </div>
         </div>
-    </div>
+    </a>
 
 <!-- AQUI ESTÁ OS CODIGOS PARA A MOVIMENTAÇAO DA CARTA -->
     <script type="text/javascript" src="cartamenu.js"></script>
