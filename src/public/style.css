@@ -9,14 +9,15 @@ nav{
     display: flex;
     height: 80px;
     width: 100%;
-    background-color: #0c0f0f;
+    /* COR DA LOGO FUNDO */
+    background-color: #000000;
     align-items: center;
     justify-content: space-between;
     padding: 0 50px 0 100px;
     flex-wrap: wrap;
 }
 nav .logo{
-    color: white;
+    color: rgb(255, 255, 255);
     font-size: 35px;
     font-weight: 600;
 }
@@ -31,7 +32,7 @@ nav ul li{
 }
 
 nav ul li a{
-    color: #f2f2f2;
+    color: #fffdfd;
     text-decoration: none;
     font-size: 18px;
     font-weight: 500;
@@ -39,6 +40,8 @@ nav ul li a{
     border-radius: 5px;
     letter-spacing: 1px;
     transition: all 0.3s ease;
+    align-items: center;
+    text-align: center;
 }
 nav ul li a.active,
 nav ul li a:hover{
@@ -85,15 +88,13 @@ nav .menu-btn i{
 /* ESTILIZANDO O CHAT */
 
 body{
+    /* background-image: linear-gradient(45deg, rgb(241, 178, 178), rgb(156, 157, 254)); */
     background-image: linear-gradient(45deg, rgb(241, 178, 178), rgb(156, 157, 254));
 }
-
-
 .card {
     height: 670px;
     background: #fff;
     transition: .5s;
-    border: 0;
     margin-bottom: 30px;
     border-radius: .55rem;
     position: absolute;
@@ -102,7 +103,8 @@ body{
     top: 11%;
     left: 63%;
     display: none;
-
+    border: 40%;
+    border-color: #000000;
 }
 
 .btnSair {
@@ -123,9 +125,10 @@ body{
 }
 
 .chat-app .chat {
-    border-left: 1px solid #eaeaea;
     height: 100%;
     overflow: auto;
+    border: 40%;
+    border-color: #000000;
 }
 
 .chat-app .people-list {
@@ -236,7 +239,7 @@ body{
 
 .chat .chat-history .other-message:after {
     border-bottom-color: #e8f1f3;
-    left: 93%
+    left: 71%
 }
 
 .chat .chat-message {
