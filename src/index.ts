@@ -14,6 +14,8 @@ import Lobby from "./routes/Lobby.js";
 
 import Lobbies from "./database/Lobbies.js";
 
+import Server from "./server/Server.js";
+
 /**
  * A função principal do projeto.
  * @returns {void}
@@ -34,6 +36,22 @@ async function run( ) {
    // Adicione os caminhos da API REST.
    routeManager.addRouter( Main, "/" );
    routeManager.addRouter( Lobby, "/lobbies" );
+
+   Server.on('connect', (socket) => {
+    console.log(socket.id + " connected.");
+
+    socket.send(JSON.stringify({
+        message: "Hello world!"
+    }));
+
+    socket.on('msg', (message) => {
+        console.log(`Received from ${socket.id}: ${message}`);
+    });
+
+    socket.on('disconnect', () => {
+        console.log(socket.id + " disconnected.");
+    });
+});
 }
 
 // Execute o código.

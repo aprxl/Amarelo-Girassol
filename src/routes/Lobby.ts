@@ -141,7 +141,7 @@ router.delete("/:name", async ( request, response ) => {
             }
 
             else {
-                Lobbies.updateOne({ _id: result._id }, { $pull: {  } })
+                Lobbies.updateOne({ _id: result._id }, { $pull: { players: { _id: result.id } } });
             }
         }
     });
