@@ -8,13 +8,14 @@
 import * as Mongo from "mongoose";
 
 import RouteManager from "./routes/RouteManager.js";
-
 import Main from "./routes/Main.js";
 import Lobby from "./routes/Lobby.js";
 
 import Lobbies from "./database/Lobbies.js";
 
-import Server from "./server/Server.js";
+import SocketManager from "./server/SocketManager.js";
+import Connect from "./server/events/Connect.js";
+import Tick from "./server/events/Tick.js";
 
 /**
  * A função principal do projeto.
@@ -22,6 +23,7 @@ import Server from "./server/Server.js";
  */
 async function run( ) {
    const routeManager = new RouteManager( );
+   const socketManager = new SocketManager( );
 
    // Configure o banco de dados.
    Mongo.connect("mongodb://127.0.0.1:27017/db");
@@ -37,21 +39,9 @@ async function run( ) {
    routeManager.addRouter( Main, "/" );
    routeManager.addRouter( Lobby, "/lobbies" );
 
-   Server.on('connect', (socket) => {
-    console.log(socket.id + " connected.");
-
-    socket.send(JSON.stringify({
-        message: "Hello world!"
-    }));
-
-    socket.on('msg', (message) => {
-        console.log(`Received from ${socket.id}: ${message}`);
-    });
-
-    socket.on('disconnect', () => {
-        console.log(socket.id + " disconnected.");
-    });
-});
+   // Adicione os diferentes eventos do servidor.
+   socketManager.addEvent( new Connect( ) );
+   socketManager.addEvent( new Tick( socketManager ) );
 }
 
 // Execute o código.

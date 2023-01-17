@@ -1,5 +1,8 @@
 # Ignore todos os módulos Node.
 node_modules/
 
+# Ignore os arquivos transpilados.
+dist/
+
 # Ignore a pasta 'playground' (área de teste).
 playground/
