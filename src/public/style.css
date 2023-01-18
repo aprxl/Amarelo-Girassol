@@ -92,6 +92,37 @@ body{
     background-image: linear-gradient(45deg, rgb(241, 178, 178), rgb(156, 157, 254));
     /* overflow: hidden; */
 }
+
+/* CSS DOS JOGADORES NA SALA */
+.box{
+    position: absolute;
+    top: 10%;
+    left: 40%;
+    width: 500px;
+    height: 600px;
+    display: none;
+    border-radius: 20px;
+    background-color: #c0c0c0;
+}
+
+/* EMBARALHAR */
+.Embaralhar{
+    position: absolute;
+    top: 30%;
+    left: 20%;
+    width: 600px;
+    height: 500px;
+    justify-content: center;
+    align-items: center;
+    background: #434651;
+    overflow: hidden;
+    border-radius: 20px;
+    display: "block";
+
+}
+
+
+/* CSS DO CHAT */
 .card {
     height: 670px;
     background: #fff;
@@ -306,11 +337,12 @@ body{
     }
 }
 
+
+/* css das cartas */
 .carta1{
     position: absolute;
     width: 300px;
     height: 400px;
-    display: flex;
     justify-content: center;
     align-items: center;
     background: #434651;
@@ -318,6 +350,8 @@ body{
     border-radius: 20px;
     top: 56%;
     left: 23%;
+
+    display: none;
 
 }
 .carta1::before{
@@ -354,7 +388,6 @@ body{
     position: absolute;
     width: 300px;
     height: 400px;
-    display: flex;
     justify-content: center;
     align-items: center;
     background: #434651;
@@ -362,6 +395,7 @@ body{
     border-radius: 20px;
     top: 56%;
     left: 40%;
+    display: none;
 }
 .carta2::before{
     content: "";
