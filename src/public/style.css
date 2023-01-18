@@ -90,6 +90,7 @@ nav .menu-btn i{
 body{
     /* background-image: linear-gradient(45deg, rgb(241, 178, 178), rgb(156, 157, 254)); */
     background-image: linear-gradient(45deg, rgb(241, 178, 178), rgb(156, 157, 254));
+    /* overflow: hidden; */
 }
 .card {
     height: 670px;
