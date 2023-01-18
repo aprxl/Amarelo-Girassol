@@ -15,7 +15,8 @@ import Lobbies from "./database/Lobbies.js";
 
 import SocketManager from "./server/SocketManager.js";
 import Connect from "./server/events/Connect.js";
-import Tick from "./server/events/Tick.js";
+import TickSend from "./server/events/TickSend.js";
+import TickReceive from "./server/events/TickReceive.js";
 
 /**
  * A função principal do projeto.
@@ -41,7 +42,8 @@ async function run( ) {
 
    // Adicione os diferentes eventos do servidor.
    socketManager.addEvent( new Connect( ) );
-   socketManager.addEvent( new Tick( socketManager ) );
+   socketManager.addEvent( new TickReceive( ) );
+   socketManager.addEvent( new TickSend( socketManager ) );
 }
 
 // Execute o código.

@@ -1,7 +1,14 @@
 import SocketServer from "../SocketManager.js";
 import Event from "../Event.js";
 
-export default class Tick extends Event {
+interface Response {
+   id: string,
+   message: string
+};
+
+// O evento cujo mantém a constante transmissão de dados
+// entre o servidor e cliente.
+export default class TickSend extends Event {
    public readonly name = "tick";
    
    public constructor(
@@ -17,9 +24,8 @@ export default class Tick extends Event {
       const server = this.manager.getServer( );
       const date = new Date( );
 
-      console.log( `Tick event (${date.toISOString( )}).` );
-
-      server.sockets.emit(this.name, {
+      // Emita um broadcast para todos os clientes.
+      server.sockets.timeout(10000).emit(this.name, {
          date: date,
          data: { }
       });
