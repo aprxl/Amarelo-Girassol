@@ -20,6 +20,9 @@ btn.addEventListener("click", function() {
       container.style.display = "block";
   }   
 });
+btn.addEventListener("click",function(){
+    containerjogadores.style.display = "none";
+});
 
 /* BOTAO DE VER OS JOGADORES NA SALA */
 var btnjogadores = document.getElementById("mostrarjogadores");
@@ -31,6 +34,10 @@ btnjogadores.addEventListener("click", function(){
         containerjogadores.style.display = "block";
     }
 });
+btnjogadores.addEventListener("click",function(){
+    container.style.display = "none";
+});
+
 
 /* EMBARALHAR O JOGO */
 var btnembaralhar = document.getElementById("embaralhar");

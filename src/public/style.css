@@ -97,12 +97,12 @@ body{
 .box{
     position: absolute;
     top: 10%;
-    left: 40%;
+    left: 66%;
     width: 500px;
     height: 600px;
     display: none;
     border-radius: 20px;
-    background-color: #c0c0c0;
+    background-color: #c2c2c2;
 }
 
 /* EMBARALHAR */
