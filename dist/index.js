@@ -10,8 +10,6 @@ import Main from "./routes/Main.js";
 import Lobby from "./routes/Lobby.js";
 import Lobbies from "./database/Lobbies.js";
 import SocketManager from "./server/SocketManager.js";
-import Connect from "./server/events/Connect.js";
-import Tick from "./server/events/Tick.js";
 /**
  * A função principal do projeto.
  * @returns {void}
@@ -30,8 +28,6 @@ async function run() {
     routeManager.addRouter(Main, "/");
     routeManager.addRouter(Lobby, "/lobbies");
     // Adicione os diferentes eventos do servidor.
-    socketManager.addEvent(new Connect());
-    socketManager.addEvent(new Tick(socketManager));
 }
 // Execute o código.
 run();

@@ -14,9 +14,7 @@ import Lobby from "./routes/Lobby.js";
 import Lobbies from "./database/Lobbies.js";
 
 import SocketManager from "./server/SocketManager.js";
-import Connect from "./server/events/Connect.js";
-import TickSend from "./server/events/TickSend.js";
-import TickReceive from "./server/events/TickReceive.js";
+import Ping from "./server/events/Ping.js";
 
 /**
  * A função principal do projeto.
@@ -41,9 +39,7 @@ async function run( ) {
    routeManager.addRouter( Lobby, "/lobbies" );
 
    // Adicione os diferentes eventos do servidor.
-   socketManager.addEvent( new Connect( ) );
-   socketManager.addEvent( new TickReceive( ) );
-   socketManager.addEvent( new TickSend( socketManager ) );
+   socketManager.addSocketEvent( new Ping( ) );
 }
 
 // Execute o código.

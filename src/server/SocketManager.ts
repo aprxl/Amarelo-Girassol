@@ -1,18 +1,27 @@
-import { Server } from "socket.io";
+import { Server, Socket } from "socket.io";
 import SocketEvent from "./Event.js";
 
-type Callback = () => void;
+type Callback = (...args: any[ ]) => void;
 
 // Classe responsável pela organização e o
 // registro de eventos do Socket.io
 class SocketServer {
   private readonly server: Server;
+  private socketEvents: SocketEvent[ ] = [ ];
 
   public constructor(
     private port: number = 3001,
     private tickrate: number = 1 / 2 
   ) {
     this.server = new Server(this.port);
+
+    this.on('connect', (socket: Socket) => {
+      for (const event of this.socketEvents) {
+        socket.on(event.name, (...args: any[]) => {
+          event.callback(socket, ...args);
+        });
+      }
+    });
   }
 
   /**
@@ -31,10 +40,16 @@ class SocketServer {
    * Adiciona um novo listener de eventos (classe).
    * @param event SocketEvent
    */
-  public addEvent(
+  public addSocketEvent(
     event: SocketEvent
   ) {
-    this.on( event.name, event.callback );
+    this.socketEvents.push(event);
+  }
+
+  public addServerEvent(
+    event: SocketEvent
+  ) {
+    this.on(event.name, event.callback);
   }
 
   /**
