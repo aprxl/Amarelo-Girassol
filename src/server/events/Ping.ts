@@ -7,6 +7,6 @@ export default class Ping extends SocketEvent {
    public callback( io: Socket, socketId: string ): void {
       console.log(`Ping from ${socketId}.`);
 
-      io.emit('pong', "abc");
+      io.emit('pong', "Pong!");
    }
 }
