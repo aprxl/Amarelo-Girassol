@@ -1,5 +1,3 @@
-// A classe abstrata responsável por definir
-
 import { Socket } from "socket.io";
 
 // o corpo de um evento do Socket.io
