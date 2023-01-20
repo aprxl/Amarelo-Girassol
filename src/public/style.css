@@ -102,24 +102,48 @@ body{
     height: 600px;
     display: none;
     border-radius: 20px;
-    background-color: #c2c2c2;
+    background-color: #c9c9c9;
 }
 
 /* EMBARALHAR */
 .Embaralhar{
     position: absolute;
-    top: 30%;
-    left: 20%;
-    width: 600px;
-    height: 500px;
-    justify-content: center;
-    align-items: center;
-    background: #434651;
-    overflow: hidden;
-    border-radius: 20px;
-    display: "block";
-
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
+.botaoem{
+    position: relative;
+    width: 500px;
+    height: 300px;
+    border-radius: 40px;
+    overflow: hidden;
+    align-items: center;
+    justify-content: center;
+    background: white;
+
+    display: "block";
+}
+.botaoem::before{
+    content: '';
+    position: absolute;
+    width: 600px;
+    height: 600px;
+    background: linear-gradient(rgb(19, 194, 156), rgb(185, 212, 29));
+    animation: cartaem 1.3s ease infinite;
+    transition: 1s ease;
+}
+.Embaralhar:hover .botaoem::before{
+    background: #e9d063;
+}
+
+
+@keyframes cartaem{
+    100%{
+        transform: rotate(360deg);
+    }
+}
+
 
 
 /* CSS DO CHAT */
