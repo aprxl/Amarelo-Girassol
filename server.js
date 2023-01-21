@@ -10,6 +10,7 @@ const app = express();
 const server = http.createServer(app);
 const PORT = 4000;
 const io = socketIO(server);
+const lau = "http://localhost:"
 
 
 app.use(express.static(path.join(__dirname, 'src/public')));
@@ -41,5 +42,4 @@ io.on("connection", socket => {
     });
 });
 
-
-server.listen(PORT, () => console.log("Servidor online na porta " + PORT));
+server.listen(PORT, () => console.log(`servidor online aqui: ${lau}${PORT}`));
