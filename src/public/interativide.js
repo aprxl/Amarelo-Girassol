@@ -58,6 +58,8 @@ const primeiracarta = cartas[(Math.floor(Math.random() * (cartas.length)))];
 const segundacarta = cartas[(Math.floor(Math.random() * (cartas.length)))];
 var pcarta = document.querySelector("#primeiracarta")
 var scarta = document.querySelector("#segundacarta")
+exports.pcarta = pcacrta;
+exports.scarta = scarta;
 
 /* ESCOLHENDO AS CARTAS */
 btnembaralhar.addEventListener("click", function(){
