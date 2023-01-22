@@ -3,6 +3,17 @@ const btnSair  = document.getElementById('btnSair');
 const getLocalStorage = () =>JSON.parse(localStorage.getItem('usuario')) ?? [];
 const socket = io();
 const { usuarionome, meuid } = Qs.parse(location.search, { ignoreQueryPrefix: true });
+/*const audio = new Audio("Audio\zapsplat_multimedia_button_click_bright_002_92099.mp3");*/
+/*nao tenho ctz se funciona chamar o audio assim*/
+/*const buttons = document.querySelectorAll("button");*/
+
+
+/*buttons.forEach(button = > {
+    button.addEventListener("click", () = > {
+        audio.play();
+    });
+});
+tentando colocar sonzinho*/
 
 socket.emit('entrarSala', { usuarionome, meuid});
 
