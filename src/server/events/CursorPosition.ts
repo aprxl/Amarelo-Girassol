@@ -1,15 +1,6 @@
 import { Socket } from "socket.io";
 import SocketEvent from "../Event.js";
-
-interface Vector2 {
-   x: number;
-   y: number;
-}
-
-interface Packet {
-   position: Vector2;
-   date: Date;
-}
+import Packet from "../packets/CursorPositionPacket.js";
 
 interface VectorMap {
    [key: string]: Packet;
@@ -32,7 +23,7 @@ class CursorPosition extends SocketEvent {
    private static positions: VectorMap = { };
 
    public static getCursorPosition(socketId: string): Vector2 {
-      return CursorPosition.positions[socketId]?.position ?? { x: 0, y: 0 };
+      return CursorPosition.positions[socketId]?.data.x ?? { x: 0, y: 0 };
    }
 
    public static getAll(): VectorMap {
@@ -43,8 +34,13 @@ class CursorPosition extends SocketEvent {
       CursorPosition.positions = { };
    }
 
-   public callback( socket: Socket, data: Packet ): void {
-      const date = new Date(data.date);
+   public callback( socket: Socket, packet: Packet ): void {
+      const data = packet.data;
+      const date = new Date(packet.date);
+
+      if (!data || !date) {
+         return;
+      }
 
       socket.emit(this.name, {
          date: new Date().toISOString( ),
@@ -55,10 +51,8 @@ class CursorPosition extends SocketEvent {
          return;
       }
 
-      console.log(`Updated ${socket.id} (${JSON.stringify(data.position)})`);
-
       CursorPosition.positions[socket.id] = {
-         position: { x: data.position.x, y: data.position.y },
+         data: { x: data.x, y: data.y },
          date: date
       };
    }
