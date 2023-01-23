@@ -1,9 +1,23 @@
-const inputTexto = document.getElementById('enviarMensagem');
-const btnSair = document.getElementById('btnSair');
-const socket = io(); 
+const inputTexto = document.getElementById('enviarMensagem');   /* pega o id do input no chat.html           */
+const btnSair = document.getElementById('btnSair');             /* pega o id do botao de sair do jogo        */
+const socket = io();                                            /* define a variavel socket como a função io */
 
-const getLocalStorage = () =>JSON.parse(localStorage.getItem('usuario')) ?? []; /* ta passando pra um array */
-const { usuarionome, meuid } = Qs.parse(location.search, { ignoreQueryPrefix: true });
+const getLocalStorage = () =>JSON.parse(localStorage.getItem('usuario')) ?? [];           /* ta pegando os usuarios do index.js e passando eles para array */
+const { usuarionome, meuid } = Qs.parse(location.search, { ignoreQueryPrefix: true });    /* definindo variaveis com uns bgl esquisito                     */
+
+
+/* -------------------------------- SAIR DA SALA -------------------------------------------- */
+
+/* USUARIO SAIU DA SALA */  
+btnSair.addEventListener('click', function(){                       /* se clicar fazer a função                 */
+    const sairSala = confirm('Certeza que deseja sair da sala?');   /* perguntar se tem certeza se quer sair    */
+    if (sairSala) {                                                 /* se clicar em sair                        */
+        socket.emit('sairSala');                                    /* se ele confirmar que quer sair da sala:  */
+        window.location.href='index.html';                          /* mandando o usuario ir pro index.html     */
+}});
+
+
+/* ----------------------------------- CHAT--------------------------------------------------- */
 
 /* INFORMA QUE O USUARIO ENTROU NA SALA */
 socket.emit('entrarSala', { usuarionome, meuid});
@@ -16,15 +30,6 @@ inputTexto.addEventListener('keyup', function(e){   /* se apertar a tecla:      
         this.value = '';
 }});
 
-/* USUARIO SAIU DA SALA */  
-btnSair.addEventListener('click', function(){                       /* se clicar fazer a função                 */
-    const sairSala = confirm('Certeza que deseja sair da sala?');   /* perguntar se tem certeza se quer sair    */
-    if (sairSala) {                                                 /* se clicar em sair                        */
-        socket.emit('sairSala');                                    /* se ele confirmar que quer sair da sala:  */
-        window.location.href='index.html';                          /* mandando o usuario ir pro index.html     */
-}});
-
-
 /* FUNÇAO DE ADICIONAR NOVA MENSAGEM */
 function adicionarNovaMensagem(mensagem) {                          /* recebe como parametro a mensagem                  */
     const usuarioStorage = getLocalStorage();                       /* definir o json do usuario como uma variavel       */
@@ -33,6 +38,7 @@ function adicionarNovaMensagem(mensagem) {                          /* recebe co
         minhaMensagem = mensagem.meuid === usuarioStorage.meuId;    /* define minha mensagem tendo o mesmo id do usuario */
     }
 
+    /* ---------------- DEFININDO VARIAVEIS ------------------ */
     var divMensagem = '';
     var divDetalhes = '';
     var quadroMensagens = document.getElementById('quadro-mensagens');
@@ -46,7 +52,8 @@ function adicionarNovaMensagem(mensagem) {                          /* recebe co
         divMensagem = criarElementoHtml('div', ['message', 'my-message']);
         divDetalhes = criarElementoHtml('div', ['message-data']);
     }
-
+    
+    /* ---------- TRANSFORMANDO EM DIVS PRO HTML ------------- */
     span.innerHTML = (minhaMensagem ? "eu" : mensagem.usuarioNome) + ', ' + mensagem.horario;
     divMensagem.innerHTML = mensagem.mensagem;
     divDetalhes.appendChild(span);
@@ -69,20 +76,11 @@ function realizarScrollChat() {
     elem.scrollTop = elem.scrollHeight;
 }
 
-socket.on('salaUsuarios', ({sala, usuarios}) => {
-    document.getElementById("salaId").innerHTML = sala;
-    document.getElementById("listaUsuarios").innerHTML = '';
-    for (var usuario of usuarios) {
-        criarListaUsuarios(usuario.nome);
-    }
-});
 
-socket.on('novaMensagem', (mensagem) => {
-    adicionarNovaMensagem(mensagem);
-});
-
-/* ADICIONAR ESSA FUNÇAO NO HTML */
+/* ---------------------- LISTA DE USUARIOS -------------------------------- */
 function criarListaUsuarios(usuarioNome) {
+
+    /* ---------- DEFININDO VARIAVEIS ----------------- */
     var listaUsuarios = document.getElementById("listaUsuarios");
     var liUsuario = criarElementoHtml("li", ["clearfix"]);
     var divDescricaoUsuario = criarElementoHtml('div', ["about"]);
@@ -90,6 +88,7 @@ function criarListaUsuarios(usuarioNome) {
     var divStatusUsuario = criarElementoHtml('div', ["status"]);
     var iconeStatus = criarElementoHtml("i" , ["fa", "fa-circle", "online"]);
 
+    /* ----------- CRIANDO DIVS PRO HTML -------------- */
     iconeStatus.innerHTML = "online";
     divNomeUsuario.innerHTML = usuarioNome;
     divStatusUsuario.appendChild(iconeStatus);
@@ -98,3 +97,120 @@ function criarListaUsuarios(usuarioNome) {
     liUsuario.appendChild(divDescricaoUsuario);
     listaUsuarios.appendChild(liUsuario);
 }
+
+
+/* --------------------------- MENU RESPONSIVO --------------------------- */
+var ul = document.querySelector('nav ul');
+var menuBtn = document.querySelector('.menu-btn i');
+function menuShow() {
+    if (ul.classList.contains('open')) {
+        ul.classList.remove('open');
+    }else{
+        ul.classList.add('open');
+    }
+}
+
+
+/* -------------------------------- BOTOES ------------------------------- */
+
+/* ---------------- BOTAO DE VER O CHAT --------------------- */
+
+/* DEFINDO VARIAVEIS */
+var btn = document.getElementById("mostrar");
+var container = document.querySelector(".card");
+
+btn.addEventListener("click", function() { 
+  if(container.style.display === "block") {
+        container.style.display = "none";
+    } else {
+      container.style.display = "block";
+  }   
+});
+btn.addEventListener("click",function(){
+    containerjogadores.style.display = "none";
+});
+
+/* ----------- BOTAO DE VER OS JOGADORES NA SALA ------------- */
+
+/* DEFINDO VARIAVEIS */
+var btnjogadores = document.getElementById("mostrarjogadores");
+var containerjogadores = document.querySelector(".box");
+
+/* FUNÇÕES */
+btnjogadores.addEventListener("click", function(){
+    if (containerjogadores.style.display === "block"){
+        containerjogadores.style.display = "none";
+    }else{
+        containerjogadores.style.display = "block";
+    }
+});
+btnjogadores.addEventListener("click",function(){
+    container.style.display = "none";
+});
+
+
+/* ----------------- EMBARALHAR O JOGO ---------------------- */
+
+/* DEFININDO VARIAVEIS */
+var btnembaralhar = document.getElementById("embaralhar");
+var containerembaralhar = document.querySelector(".Embaralhar");
+const cartas = ["bobo", "conselheiro", "eremita", "cavalheiro", "duque", "escriba", "monarca"]
+const primeiracarta = cartas[(Math.floor(Math.random() * (cartas.length)))];
+const segundacarta = cartas[(Math.floor(Math.random() * (cartas.length)))];
+var pcarta = document.querySelector("#primeiracarta")
+var scarta = document.querySelector("#segundacarta")
+
+/* BOTAO EMBARALHAR */
+btnembaralhar.addEventListener("click", function(){
+    if (containerembaralhar.style.display === "none"){
+        containerembaralhar.style.display = "block";
+    }else{
+        containerembaralhar.style.display = "none";
+    }
+});
+
+/* ESCOLHENDO AS CARTAS */
+btnembaralhar.addEventListener("click", function(){
+    pcarta.innerHTML = primeiracarta;
+    scarta.innerHTML = segundacarta;
+});
+
+
+/* ------------- REVELANDO AS CARTAS ------------------*/
+
+/* DEFININDO VARIAVEIS */
+var containercarta1 = document.querySelector(".carta1");
+var containercarta2 = document.querySelector(".carta2");
+
+/* FUNÇÕES */
+btnembaralhar.addEventListener("click", function(){
+    if (containercarta1.style.display === "block"){
+        containercarta1.style.display = "none";
+    }else{
+        containercarta1.style.display = "block";
+    }
+});
+btnembaralhar.addEventListener("click", function(){
+    if (containercarta2.style.display === "block"){
+        containercarta2.style.display = "none";
+    }else{
+        containercarta2.style.display = "block";
+    }
+});
+
+
+/* --------------------------- SERVIDOR ---------------------------------- */
+
+/* DEFIININDO OS USUARIOS NA SALA */
+socket.on('salaUsuarios', ({sala, usuarios}) => {
+    document.getElementById("salaId").innerHTML = sala;
+    document.getElementById("listaUsuarios").innerHTML = '';
+    for (var usuario of usuarios) {
+        criarListaUsuarios(usuario.nome);
+    }
+});
+
+/* ADICIONANDO MENSAGEM */
+socket.on('novaMensagem', (mensagem) => {
+    adicionarNovaMensagem(mensagem);
+});
