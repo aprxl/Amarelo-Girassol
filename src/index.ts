@@ -16,6 +16,7 @@ import Lobbies from "./database/Lobbies.js";
 import SocketManager from "./server/SocketManager.js";
 import Ping from "./server/events/Ping.js";
 import Tick from "./server/events/Tick.js";
+import { CursorPosition } from "./server/events/CursorPosition.js";
 
 /**
  * A função principal do projeto.
@@ -42,6 +43,7 @@ async function run( ) {
    // Adicione os diferentes eventos do servidor.
    socketManager.addSocketEvent( new Ping( ) );
    socketManager.addServerEvent( new Tick( socketManager ) );
+   socketManager.addSocketEvent( new CursorPosition( ) );
 }
 
 // Execute o código.

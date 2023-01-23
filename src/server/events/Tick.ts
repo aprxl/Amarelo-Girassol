@@ -19,7 +19,7 @@ export default class Tick extends SocketEvent {
 
       server.emit('tick', {
          raw: "",
-         date: new Date().toTimeString()
+         date: new Date()
       });
    }
 }

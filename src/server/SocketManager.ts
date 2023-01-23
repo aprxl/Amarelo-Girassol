@@ -11,9 +11,14 @@ class SocketServer {
 
   public constructor(
     private port: number = 3001,
-    private tickrate: number = 1 / 2 
+    private tickrate: number = 1 / 2
   ) {
-    this.server = new Server(this.port);
+    this.server = new Server(this.port, {
+      cors: {
+        methods: ["GET", "POST", "DELETE"],
+        credentials: false
+      }
+    });
 
     this.on('connect', (socket: Socket) => {
       for (const event of this.socketEvents) {
@@ -46,6 +51,10 @@ class SocketServer {
     this.socketEvents.push(event);
   }
 
+  /**
+   * Adiciona um novo listener de eventos (classe).
+   * @param event SocketEvent
+   */
   public addServerEvent(
     event: SocketEvent
   ) {
