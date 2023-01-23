@@ -22,10 +22,6 @@ class CursorPosition extends SocketEvent {
 
    private static positions: VectorMap = { };
 
-   public static getCursorPosition(socketId: string): Vector2 {
-      return CursorPosition.positions[socketId]?.data.x ?? { x: 0, y: 0 };
-   }
-
    public static getAll(): VectorMap {
       return CursorPosition.positions;
    }
