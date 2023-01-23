@@ -2,6 +2,7 @@ const express = require("express");
 const path = require("path");
 const http = require("http");
 const socketIO = require("socket.io");
+
 const { usuarioEntrarSala, getUsuariosSala, mensagemFormatada, getUsuario, usuarioSairSala } = require('./usuario');
 
 
@@ -10,14 +11,15 @@ const app = express();
 const server = http.createServer(app);
 const PORT = 4000;
 const io = socketIO(server);
+const lau = "http://localhost:"
 
 
 app.use(express.static(path.join(__dirname, 'src/public')));
+
 const nomeSala = "sala-Feudo"
 
 
 // DEIXAR ONLINE O BGL//
-
 io.on("connection", socket => {
     socket.on('entrarSala', ({usuarionome, meuid}) => {
         const usuario = usuarioEntrarSala(socket.id, usuarionome, nomeSala, meuid);
@@ -28,9 +30,13 @@ io.on("connection", socket => {
     });
 
     socket.on('mensagemChat', mensagem => {
-        const usuario = getUsuario(socket.id);
+        const usuario = getUsuario(socket.id);                                                              /* definir o usuario como o id tal da lista de usuarios */
         io.to(nomeSala).emit('novaMensagem', mensagemFormatada(usuario.nome, mensagem, usuario.meuid));
     });
+
+    /* iniciar o jogo */
+
+    /* se clicar no escriba */
 
     socket.on('sairSala', () => {
         const usuario = usuarioSairSala(socket.id);
@@ -41,5 +47,4 @@ io.on("connection", socket => {
     });
 });
 
-
-server.listen(PORT, () => console.log("Servidor online na porta " + PORT));
+server.listen(PORT, () => console.log(`servidor online aqui: ${lau}${PORT}`));
