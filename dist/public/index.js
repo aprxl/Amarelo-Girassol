@@ -8,6 +8,6 @@ function btnEntrar() {
         nome: inputNome,
         meuID: idUsuario
     });
-    window.location.href = "chat.html?usuarionome=" + inputNome + "&meuID=" + idUsuario;
+    window.location.href = "pagJogo?usuarionome=" + inputNome + "&meuID=" + idUsuario;
 }
 //# sourceMappingURL=index.js.map

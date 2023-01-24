@@ -13,9 +13,6 @@ function buttonClick(whichFunction) {
   }
 }
 
-function cecilia() {
-  console.log('cecilia')
-}
 
 function btnEntrar() {
   var inputNome = document.getElementById('nome').value
