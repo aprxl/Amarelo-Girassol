@@ -199,6 +199,12 @@ btnembaralhar.addEventListener("click", function(){
 });
 
 
+/* -------------------------- AUDIOS :) ---------------------------------- */
+
+
+
+
+
 /* --------------------------- SERVIDOR ---------------------------------- */
 
 /* DEFIININDO OS USUARIOS NA SALA */
