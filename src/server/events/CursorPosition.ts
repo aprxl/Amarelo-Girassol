@@ -26,8 +26,17 @@ class CursorPosition extends SocketEvent {
       return CursorPosition.positions;
    }
 
+   public static getFromId( id: string ): Packet | null {
+      return CursorPosition.positions[id];
+   }
+
    public static resetAll(): void {
       CursorPosition.positions = { };
+   }
+
+   public static resetFromId( id: string ): void {
+      if ( CursorPosition.positions[id] )
+         delete CursorPosition.positions[id];
    }
 
    public callback( socket: Socket, packet: Packet ): void {
@@ -43,6 +52,8 @@ class CursorPosition extends SocketEvent {
          vectors: CursorPosition.getAll( )
       });
 
+      console.log(`Received packet from ${socket.id}: x: ${data.x} and y: ${data.y}`);
+
       if ( date < ( new Date(CursorPosition.positions[socket.id]?.date) ?? new Date( ) ) ) {
          return;
       }
@@ -51,6 +62,10 @@ class CursorPosition extends SocketEvent {
          data: { x: data.x, y: data.y },
          date: date
       };
+   }
+
+   public destroy( socket: Socket ): void {
+      CursorPosition.resetFromId(socket.id);
    }
 }
 

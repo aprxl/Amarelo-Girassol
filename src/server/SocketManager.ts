@@ -21,11 +21,22 @@ class SocketServer {
     });
 
     this.on('connect', (socket: Socket) => {
+      console.log(`A client has connected. (${socket.id})`);
+
       for (const event of this.socketEvents) {
         socket.on(event.name, (...args: any[]) => {
           event.callback(socket, ...args);
         });
       }
+
+      socket.on('disconnect', () => {
+        console.log(`A client has disconnected. (${socket.id})`);
+
+        for (const event of this.socketEvents) {
+          if (event.destroy)
+            event.destroy(socket);
+        }
+      })
     });
   }
 
