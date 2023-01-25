@@ -6,6 +6,7 @@
 ///
 
 import * as Mongo from "mongoose";
+import Http from "http";
 
 import RouteManager from "./routes/RouteManager.js";
 import Main from "./routes/Main.js";
@@ -24,7 +25,8 @@ import { CursorPosition } from "./server/events/CursorPosition.js";
  */
 async function run( ) {
    const routeManager = new RouteManager( );
-   const socketManager = new SocketManager( );
+   const httpServer = Http.createServer(routeManager.getApp( )).listen(3000);
+   const socketManager = new SocketManager(httpServer);
 
    // Configure o banco de dados.
    Mongo.connect("mongodb://127.0.0.1:27017/db");

@@ -1,5 +1,6 @@
 import { Server, Socket } from "socket.io";
 import SocketEvent from "./Event.js";
+import Http from "http";
 
 type Callback = (...args: any[ ]) => void;
 
@@ -10,13 +11,13 @@ class SocketServer {
   private socketEvents: SocketEvent[ ] = [ ];
 
   public constructor(
-    private port: number = 3001,
+    private httpServer: Http.Server,
+    private port: number = 3000,
     private tickrate: number = 1 / 2
   ) {
-    this.server = new Server(this.port, {
+    this.server = new Server(this.httpServer, {
       cors: {
-        methods: ["GET", "POST", "DELETE"],
-        credentials: false
+        "credentials": false
       }
     });
 
