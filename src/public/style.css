@@ -442,3 +442,8 @@ body{
     font-size: 2em;
     z-index: 10;
 }
+.patacas2{
+    position: absolute;
+    top: 10%;
+    left: 30%;
+}
