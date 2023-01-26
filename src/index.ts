@@ -9,9 +9,12 @@
  * A função principal do projeto.
  * @returns {void}
  */
+
+
 function run( ): void {
    console.log("Amarelo girassol! :innocent:");
 }
 
 // Execute o código.
 run( );
+

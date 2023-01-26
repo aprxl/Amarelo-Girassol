@@ -9,7 +9,7 @@
     <title>O Feudo</title>
     <link   rel = "website icon" 
             type = "png"
-            href ="Imagens/Vector (1).png">
+            href ="Imagens/girassol.png">
 <!-- AQUI ESTOU PEDINDO OS COMANDOS PARA FUNCIONAR ONLINE -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <link   href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" 
@@ -156,6 +156,18 @@
             float: right;
 
         }
+        /*.myButton {
+            display: flex;
+            background-color: green;
+            justify-content: center;
+            align-items: center;
+
+        }
+
+        .myButton:hover{
+            background-color: rgb(251, 186, 230);
+            cursor:  pointer;
+        }*/
 
     </style>
 
@@ -165,7 +177,7 @@
 
 <!-- AQUI COLOCAMOS A LOGO -->
     <div class="bs">
-        <img    src="Imagens/Ilustração_Sem_Título.png" 
+        <img    src="Imagens/brasao.png" 
                 width="650vw"
                 height="auto"
                 style="margin-top: 5%; overflow: hidden; margin-left: 8%;">
@@ -179,23 +191,24 @@
         <div class="mb-3 input-entrar">
             <input type="text" class="form-control" id="nome" placeholder="Insira seu nick aqui">
         </div>
-        <br><br>
-        <button onclick="btnEntrar()" type="button" id="btnEntrar" class="btn btn-success">Entrar no jogo</button>
+        
+        <button onclick="buttonClick(btnEntrar())" type="button" id="btnEntrar" class="btn btn-success">Entrar no jogo</button>
+        
     </div>
 
 <!-- AQUI COLOCAMOS AS CARTAS -->
-    <a class="linkCard" href="personagens.html">  
+    <a class="linkCard"  href="personagens.html" onclick="buttonClick(cecilia())" >  
         <div class="container">
             <div class="card">
                 <div class="content">
                     <h2>01</h2>
                     <h3>Personagens</h3>
-                    <p>Conheça os habitantes do Feudo Amarelo Girassol e suas bravuras juntamente seus pecados!</p>
+                    <p> Conheça os habitantes do Feudo Amarelo Girassol e suas bravuras juntamente seus pecados!</p>
                 </div>
             </div>
     </a>
 
-    <a class="linkCard" href="regras.html">
+    <a class="linkCard" href="regras.html" onclick="buttonClick()">
             <div class="card">
                 <div class="content">
                     <h2>02</h2>
