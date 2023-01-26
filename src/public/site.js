@@ -113,6 +113,7 @@ function menuShow() {
 
 /* -------------------------------- BOTOES ------------------------------- */
 
+
 /* ---------------- BOTAO DE VER O CHAT --------------------- */
 
 /* DEFINDO VARIAVEIS */
@@ -200,8 +201,17 @@ btnembaralhar.addEventListener("click", function(){
 
 
 /* -------------------------- AUDIOS :) ---------------------------------- */
+var patacasb = document.getElementById("patacasbotao");
 
-
+patacasb.addEventListener("click", function(){
+    const usuarioStorage = getLocalStorage();
+    /* pegar o id do carinha */
+    if(usuarioStorage.meuId){
+        usuarioStorage.patacas++;
+        console.log(usuarioStorage.patacas)
+        return usuarioStorage.patacas;
+    }
+});
 
 
 
