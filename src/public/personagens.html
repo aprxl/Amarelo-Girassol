@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="website icon" type="png" href="Imagens/girassol.png" />
+    <title>Sobre os Personagens</title>
+    <link rel="stylesheet" href="index.js" />
+  </head>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: serif, swiss;
+    }
+
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      overflow: hidden;
+      background-image: linear-gradient(
+        45deg,
+        rgb(199, 75, 75),
+        rgb(252, 233, 159)
+      );
+    }
+
+    .container {
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      max-width: 1200px;
+      flex-wrap: wrap;
+      z-index: 1;
+      flex-direction: column;
+    }
+
+    .container .card {
+      position: relative;
+      width: 300px;
+      height: 50px;
+      margin: 15px;
+      box-shadow: 20px 20px 50px rgba(48, 21, 54, 0.3);
+      border-radius: 15px;
+      background-color: rgb(81, 2, 2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-top: 1px solid rgba(119, 163, 240, 0.7);
+      border-left: 1px solid rgba(119, 163, 240, 0.7);
+      overflow: hidden;
+      text-decoration-color: rgb(255, 255, 255);
+    }
+
+    .container .card h2 {
+      color: rgb(255, 248, 200);
+      position: absolute;
+      pointer-events: none;
+      font-size: 2.3em;
+      text-align: center;
+    }
+    .cartamonarca {
+      position: absolute;
+      left: 50px;
+      top: 75px;
+    }
+    .regramonarca {
+      position: absolute;
+      right: 50px;
+      top: 75px;
+    }
+  </style>
+
+  <body>
+    <div class="container">
+      <img src="Imagens/brasao.png" width="12%" />
+
+      <div class="card" id="seletor1">
+        <h2>Boba da Corte</h2>
+      </div>
+
+      <div class="card_teste" id="regra1" style="display: none">
+        <img
+          class="cartamonarca"
+          src="Imagens/Boba2.png"
+          width="21%"
+        />
+        <img class="regramonarca" src="Imagens/Cartaboba2.png" width="21%" />
+      </div>
+
+      <div class="card" id="seletor2">
+        <h2>Cavaleiro</h2>
+      </div>
+
+      <div class="card_teste2" id="regra2" style="display: none">
+        <img class="cartamonarca" src="Imagens/Cavaleiro.png" width="21%" />
+        <img
+          class="regramonarca"
+          src="Imagens/CartaCavaleirp.png"
+          width="21%"
+        />
+      </div>
+
+      <div class="card" id="seletor3">
+        <h2>Conselheiro</h2>
+      </div>
+
+      <div class="card_teste3" id="regra3" style="display: none">
+        <img class="cartamonarca" src="Imagens/Conselheiro.png" width="21%" />
+        <img
+          class="regramonarca"
+          src="Imagens/CartaConselheiro.png"
+          width="21%"
+        />
+      </div>
+
+      <div class="card" id="seletor4">
+        <h2>Duque</h2>
+      </div>
+
+      <div class="card_teste4" id="regra4" style="display: none">
+        <img class="cartamonarca" src="Imagens/Duque.png" width="21%" />
+        <img
+          class="regramonarca"
+          src="Imagens/CartaDuque.png"
+          width="21%"
+        />
+      </div>
+
+      <div class="card" id="seletor5">
+        <h2>Eremita</h2>
+      </div>
+
+      <div class="card_teste5" id="regra5" style="display: none">
+        <img class="cartamonarca" src="Imagens/Eremita.png" width="21%" />
+        <img
+          class="regramonarca"
+          src="Imagens/CartaEremita.png"
+          width="21%"
+        />
+      </div>
+
+      <div class="card" id="seletor6">
+        <h2>Escriba</h2>
+      </div>
+      <div class="card_teste6" id="regra6" style="display: none">
+        <img class="cartamonarca" src="Imagens/Escriba2.png" width="21%" />
+        <img class="regramonarca" src="Imagens/Cartaescriba.png" width="21%" />
+      </div>
+
+      <div class="card" id="seletor7">
+        <h2>Monarca</h2>
+      </div>
+      <div class="card_teste7" id="regra7" style="display: none">
+        <img class="cartamonarca" src="Imagens/Monarca.png" width="21%" />
+        <img class="regramonarca" src="Imagens/Cartamonarca.png" width="21%" />
+      </div>
+    </div>
+
+    <script type="text/javascript" src="vanilla-tilt.min.js"></script>
+    <script>
+      VanillaTilt.init(document.querySelectorAll('.card'), {
+        max: 25,
+        speed: 400,
+        glare: true,
+        'max-glare': 1
+      })
+    </script>
+    <script type="text/javascript">
+      document
+        .getElementById('seletor1')
+        .addEventListener('mouseover', function showElement() {
+          document.getElementById('regra1').style.display = 'block'
+        })
+      document
+        .getElementById('seletor1')
+        .addEventListener('mouseout', function hideElement() {
+          document.getElementById('regra1').style.display = 'none'
+        })
+
+      document
+        .getElementById('seletor2')
+        .addEventListener('mouseover', function showElement() {
+          document.getElementById('regra2').style.display = 'block'
+        })
+      document
+        .getElementById('seletor2')
+        .addEventListener('mouseout', function hideElement() {
+          document.getElementById('regra2').style.display = 'none'
+        })
+
+      document
+        .getElementById('seletor3')
+        .addEventListener('mouseover', function showElement() {
+          document.getElementById('regra3').style.display = 'block'
+        })
+      document
+        .getElementById('seletor3')
+        .addEventListener('mouseout', function hideElement() {
+          document.getElementById('regra3').style.display = 'none'
+        })
+
+      document
+        .getElementById('seletor4')
+        .addEventListener('mouseover', function showElement() {
+          document.getElementById('regra4').style.display = 'block'
+        })
+      document
+        .getElementById('seletor4')
+        .addEventListener('mouseout', function hideElement() {
+          document.getElementById('regra4').style.display = 'none'
+        })
+
+      document
+        .getElementById('seletor5')
+        .addEventListener('mouseover', function showElement() {
+          document.getElementById('regra5').style.display = 'block'
+        })
+      document
+        .getElementById('seletor5')
+        .addEventListener('mouseout', function hideElement() {
+          document.getElementById('regra5').style.display = 'none'
+        })
+
+      document
+        .getElementById('seletor6')
+        .addEventListener('mouseover', function showElement() {
+          document.getElementById('regra6').style.display = 'block'
+        })
+      document
+        .getElementById('seletor6')
+        .addEventListener('mouseout', function hideElement() {
+          document.getElementById('regra6').style.display = 'none'
+        })
+
+      document
+        .getElementById('seletor7')
+        .addEventListener('mouseover', function showElement() {
+          document.getElementById('regra7').style.display = 'block'
+        })
+      document
+        .getElementById('seletor7')
+        .addEventListener('mouseout', function hideElement() {
+          document.getElementById('regra7').style.display = 'none'
+        })
+    </script>
+  </body>
+</html>

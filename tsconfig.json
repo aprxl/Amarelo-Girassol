@@ -1,0 +1,21 @@
+{
+    "compilerOptions": {
+        // Permitir o uso de Javascript junto do Typescript. 
+        "allowJs": true,
+
+        // Habilitar o uso da última versão do Node e do EcmaScript.
+        "module": "NodeNext",
+        "target": "ES2022",
+        "moduleResolution": "NodeNext",
+
+        // Habilitar o uso de source maps.
+        "sourceMap": true,
+
+        // Especificar o diretório de saída da transpilação do Typescript.
+        "outDir": "./dist/"
+    },
+
+    "include": [
+        "./src/**/*"
+, "src/server.js", "src/public", "src/public", "usuario.js"    ]
+}

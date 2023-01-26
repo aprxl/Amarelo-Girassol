@@ -1,0 +1,449 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;1,200;1,300;1,400&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+nav{
+    display: flex;
+    height: 80px;
+    width: 100%;
+    /* COR DA LOGO FUNDO */
+    background-color: #000000;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 50px 0 100px;
+    flex-wrap: wrap;
+}
+nav .logo{
+    color: rgb(255, 255, 255);
+    font-size: 35px;
+    font-weight: 600;
+}
+nav ul{
+    display: flex;
+    flex-wrap: wrap;
+    list-style: none;
+}
+
+nav ul li{
+    margin: 0 5px;
+}
+
+nav ul li a{
+    color: #fffdfd;
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: 500;
+    padding: 8px 15px;
+    border-radius: 5px;
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
+    align-items: center;
+    text-align: center;
+}
+nav ul li a.active,
+nav ul li a:hover{
+    background: #f88f06;
+}
+
+nav .menu-btn i{
+    color: #fff;
+    cursor: pointer;
+    display: none;
+}
+@media (max-width: 920px) {
+    nav .menu-btn i{
+        display: block;
+    }
+    nav ul{
+        position: fixed;
+        top: 80px;
+        left: -100%;
+        background-color: #0c0f0f;
+        height: 100vh;
+        width: 100%;
+        text-align: center;
+        display: block;
+        transition: all 0.3s ease;
+    }
+    nav ul.open{
+        left: 0;
+    }
+    nav ul li{
+        width: 100%;
+        margin: 50px 0;
+    }
+    nav ul li a {
+        font-size: 23px;
+    }
+    nav ul li a.active,
+    nav ul li a:hover{
+        background: none;
+        color: #f88f06;
+    }   
+}
+
+/* ESTILIZANDO O CHAT */
+
+body{
+    /* background-image: linear-gradient(45deg, rgb(241, 178, 178), rgb(156, 157, 254)); */
+    background-image: linear-gradient(45deg, rgb(241, 178, 178), rgb(156, 157, 254));
+    /* overflow: hidden; */
+}
+
+/* CSS DOS JOGADORES NA SALA */
+.box{
+    position: absolute;
+    top: 10%;
+    left: 66%;
+    width: 500px;
+    height: 600px;
+    display: none;
+    border-radius: 20px;
+    background-color: #c9c9c9;
+}
+
+/* EMBARALHAR */
+.Embaralhar{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+.botaoem{
+    position: relative;
+    width: 500px;
+    height: 300px;
+    border-radius: 40px;
+    overflow: hidden;
+    align-items: center;
+    justify-content: center;
+    background: white;
+
+    display: "block";
+}
+.botaoem::before{
+    content: '';
+    position: absolute;
+    width: 600px;
+    height: 600px;
+    background: linear-gradient(rgb(19, 194, 156), rgb(185, 212, 29));
+    animation: cartaem 1.3s ease infinite;
+    transition: 1s ease;
+}
+.Embaralhar:hover .botaoem::before{
+    background: #e9d063;
+}
+
+
+@keyframes cartaem{
+    100%{
+        transform: rotate(360deg);
+    }
+}
+
+
+
+/* CSS DO CHAT */
+.card {
+    height: 670px;
+    background: #fff;
+    transition: .5s;
+    margin-bottom: 30px;
+    border-radius: .55rem;
+    position: absolute;
+    width: 35%;
+    box-shadow: 0 1px 2px 0 rgb(0 0 0 / 10%);
+    top: 11%;
+    left: 63%;
+    display: none;
+    border: 40%;
+    border-color: #000000;
+}
+
+.btnSair {
+    text-align: right;
+}
+
+.text-right { 
+    text-align: right!important;
+}
+
+.input-entrar{
+    margin-top: 50px;
+}
+
+.titulo-login {
+    text-align: center;
+    margin-top: 20%;
+}
+
+.chat-app .chat {
+    height: 100%;
+    overflow: auto;
+    border: 40%;
+    border-color: #000000;
+}
+
+.chat-app .people-list {
+    width: 280px;
+    position: absolute;
+    left: 0;
+    top: 0;
+    padding: 20px;
+    z-index: 7;
+    overflow: auto;
+    height: 550px;
+}
+.chat .chat-header {
+    padding: 15px 20px;
+    border-bottom: 2px solid #f4f7f6
+}
+
+.chat .chat-header img {
+    float: left;
+    border-radius: 40px;
+    width: 40px
+}
+
+.chat .chat-header .chat-about {
+    float: left;
+    padding-left: 10px
+}
+
+.chat .chat-history {
+    padding: 20px;
+    border-bottom: 2px solid #fff
+}
+
+.chat .chat-history ul {
+    padding: 0
+}
+
+.chat .chat-history ul li {
+    list-style: none;
+    margin-bottom: 30px
+}
+
+.chat .chat-history ul li:last-child {
+    margin-bottom: 0px
+}
+
+.chat .chat-history .message-data {
+    margin-bottom: 15px
+}
+
+.chat .chat-history .message-data img {
+    border-radius: 40px;
+    width: 40px
+}
+
+.chat .chat-history .message-data-time {
+    color: #434651;
+    padding-left: 6px;
+    font-size: 14px;
+}
+
+.chat .chat-history .message {
+    color: #444;
+    padding: 18px 20px;
+    line-height: 26px;
+    font-size: 16px;
+    border-radius: 7px;
+    display: inline-block;
+    position: relative
+}
+
+.chat .chat-history .message:after {
+    bottom: 100%;
+    left: 7%;
+    border: solid transparent;
+    content: " ";
+    height: 0;
+    width: 0;
+    position: absolute;
+    pointer-events: none;
+    border-bottom-color: #fff;
+    border-width: 10px;
+    margin-left: -10px
+}
+
+.chat .chat-history .my-message {
+    background: #efefef
+}
+
+.chat .chat-history .my-message:after {
+    bottom: 100%;
+    left: 30px;
+    border: solid transparent;
+    content: " ";
+    height: 0;
+    width: 0;
+    position: absolute;
+    pointer-events: none;
+    border-bottom-color: #efefef;
+    border-width: 10px;
+    margin-left: -10px
+}
+
+.chat .chat-history .other-message {
+    background: #e8f1f3;
+    text-align: right
+}
+
+.chat .chat-history .other-message:after {
+    border-bottom-color: #e8f1f3;
+    left: 71%
+}
+
+.chat .chat-message {
+    padding: 20px
+}
+
+.float-right {
+    float: right
+}
+
+.clearfix:after {
+    visibility: hidden;
+    display: block;
+    font-size: 0;
+    content: " ";
+    clear: both;
+    height: 0
+}
+
+@media only screen and (max-width: 767px) {
+    .chat-app .people-list {
+        height: 465px;
+        width: 100%;
+        overflow-x: auto;
+        background: #fff;
+        left: -400px;
+        display: none
+    }
+    .chat-app .people-list.open {
+        left: 0
+    }
+    .chat-app .chat {
+        margin: 0;
+    }
+    .chat-app .chat .chat-header {
+        border-radius: 0.55rem 0.55rem 0 0
+    }
+    .chat-app .chat-history {
+        height: 100%px;
+        overflow-x: auto
+    }
+}
+
+@media only screen and (min-width: 768px) and (max-width: 992px) {
+    .chat-app .chat-list {
+        height: 650px;
+        overflow-x: auto
+    }
+    .chat-app .chat-history {
+        height: 100%;
+        overflow-x: auto
+    }
+}
+
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: landscape) and (-webkit-min-device-pixel-ratio: 1) {
+    .chat-app .chat-list {
+        height: 480px;
+        overflow-x: auto
+    }
+    .chat-app .chat-history {
+        height: calc(100vh - 350px);
+        overflow-x: auto
+    }
+}
+
+
+/* css das cartas */
+.carta1{
+    position: absolute;
+    width: 300px;
+    height: 400px;
+    justify-content: center;
+    align-items: center;
+    background: #434651;
+    overflow: hidden;
+    border-radius: 20px;
+    top: 56%;
+    left: 23%;
+
+    display: none;
+
+}
+.carta1::before{
+    content: "";
+    position: absolute;
+    width: 150px;
+    height: 140%;
+    background: linear-gradient(red, yellow);
+    animation: animate 5s linear infinite;
+}
+@keyframes animate{
+    0%{
+        transform: rotate(0deg);
+    }
+    100%{
+        transform: rotate(360deg);
+    }
+}
+.carta1::after{
+    content: '';
+    position: absolute;
+    inset: 4px;
+    background: #434651;
+    border-radius: 20px;
+}
+.carta1 p{
+    position: relative;
+    color: #e8f1f3;
+    font-size: 2em;
+    z-index: 10;
+}
+
+.carta2{
+    position: absolute;
+    width: 300px;
+    height: 400px;
+    justify-content: center;
+    align-items: center;
+    background: #434651;
+    overflow: hidden;
+    border-radius: 20px;
+    top: 56%;
+    left: 40%;
+    display: none;
+}
+.carta2::before{
+    content: "";
+    position: absolute;
+    width: 150px;
+    height: 140%;
+    background: linear-gradient(red, yellow);
+    animation: animate 5s linear infinite;
+}
+.carta2::after{
+    content: '';
+    position: absolute;
+    inset: 4px;
+    background: #434651;
+    border-radius: 20px;
+}
+.carta2 p{
+    position: relative;
+    color: #e8f1f3;
+    font-size: 2em;
+    z-index: 10;
+}
+.patacas2{
+    position: absolute;
+    top: 10%;
+    left: 30%;
+}
