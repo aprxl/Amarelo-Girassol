@@ -198,8 +198,34 @@ btnembaralhar.addEventListener("click", function(){
     }
 });
 
+/* ------------------------------ PATACAS -------------------------------- */
+var patacasb = document.getElementById("patacasbotao");
+
+patacasb.addEventListener("click", function(){
+    const usuarioStorage = getLocalStorage();
+    /* pegar o id do carinha */
+    if(usuarioStorage.meuId){
+        usuarioStorage.patacas++;
+        console.log(usuarioStorage)
+    }
+});
+
+var tirarcarta = document.getElementById("tirarcarta");
+
+tirarcarta.addEventListener("click",function(){
+    const usuarioStorage = getLocalStorage();
+    if(usuarioStorage.meuId){
+        usuarioStorage.cartas = usuarioStorage.cartas - 1;
+        console.log(usuarioStorage)
+    }
+
+});
 
 /* --------------------------- SERVIDOR ---------------------------------- */
+
+socket.on("tirarPatacas", ()=>{
+    
+});
 
 /* DEFIININDO OS USUARIOS NA SALA */
 socket.on('salaUsuarios', ({sala, usuarios}) => {
