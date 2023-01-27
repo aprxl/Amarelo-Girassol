@@ -5,12 +5,47 @@
 /// Universidade de Brasília, Campus do Gama
 ///
 
+import * as Mongo from "mongoose";
+import Http from "http";
+
+import RouteManager from "./routes/RouteManager.js";
+import Main from "./routes/Main.js";
+import Lobby from "./routes/Lobby.js";
+
+import Lobbies from "./database/Lobbies.js";
+
+import SocketManager from "./server/SocketManager.js";
+import Ping from "./server/events/Ping.js";
+import Tick from "./server/events/Tick.js";
+import { CursorPosition } from "./server/events/CursorPosition.js";
+
 /**
  * A função principal do projeto.
  * @returns {void}
  */
-function run( ): void {
-   console.log("Amarelo girassol! :innocent:");
+async function run( ) {
+   const routeManager = new RouteManager( );
+   const httpServer = Http.createServer(routeManager.getApp( )).listen(3000);
+   const socketManager = new SocketManager(httpServer);
+
+   // Configure o banco de dados.
+   Mongo.connect("mongodb://127.0.0.1:27017/db");
+   Mongo.set("strictQuery", true);
+
+   console.log("MongoDB server successfully connected.");
+
+   // Resete o banco de dados, pois sempre que o servidor reiniciar, queremos resetar
+   // a lista de salas disponíveis.
+   await Lobbies.deleteMany();
+
+   // Adicione os caminhos da API REST.
+   routeManager.addRouter( Main, "/" );
+   routeManager.addRouter( Lobby, "/lobbies" );
+
+   // Adicione os diferentes eventos do servidor.
+   socketManager.addSocketEvent( new Ping( ) );
+   socketManager.addServerEvent( new Tick( socketManager ) );
+   socketManager.addSocketEvent( new CursorPosition( ) );
 }
 
 // Execute o código.
