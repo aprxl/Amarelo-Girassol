@@ -18,7 +18,7 @@ function saidoJogo(){
         socket.emit('sairSala');                                    /* se ele confirmar que quer sair da sala:  */
         window.location.href='index.html';                          /* mandando o usuario ir pro index.html     */
 }}
-function instasair(){                                            
+function instasair(){                                          
     socket.emit('sairSala');                                    
     window.location.href='index.html';
 }
@@ -230,6 +230,10 @@ function adicionarPatacas(){
     if(usuarioStorage.meuId){
         usuarioStorage.patacas = usuarioStorage.patacas+1;
         console.log(usuarioStorage.patacas)
+        if(usuarioStorage.patacas == 10){
+            alert('Você atingiu o número maximo de patacas, DE UM GOLPE DE ESTADO !')
+            tirarPatacas()
+        }
     }}
 
 function tirarPatacas(){
@@ -260,12 +264,20 @@ function tirarCarta(){
         }
     }}
 
-/* nao permite que ele volte pra sala */
+/* ------------------------------ ANTI-CHEAT ------------------------------ */
+
 setInterval(()=>{
     const usuarioStorage = data;
     if(usuarioStorage.meuId){
-        if(usuarioStorage.cartas <= 0 ){
+        /* não deixa ter mais de 2 cartas ou menos de 0 */
+        if(usuarioStorage.cartas <= 0 || usuarioStorage > 2){
             instasair();
+            alert("não permitimos cheters nesse jogo !"); 
+        }
+        /* não deixa que o usuario tenha mais que 10 patacas */
+        else if(usuarioStorage.patacas > 10){
+            instasair();
+            alert("não permitimos cheters nesse jogo !"); 
         }
     }
 },10000);
