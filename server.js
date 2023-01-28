@@ -9,9 +9,9 @@ const { usuarioEntrarSala, getUsuariosSala, mensagemFormatada, getUsuario, usuar
 //PORTA DE ENTRADA//
 const app = express();
 const server = http.createServer(app);
-const PORT = 4000;
+const PORT = 4000 || process.env.PORT;
 const io = socketIO(server);
-const lau = "http://localhost:"
+const local = "http://localhost:"
 
 
 app.use(express.static(path.join(__dirname, 'src/public')));
@@ -19,8 +19,10 @@ app.use(express.static(path.join(__dirname, 'src/public')));
 const nomeSala = "sala-Feudo"
 
 
-// DEIXAR ONLINE O BGL//
+// QUANDO O CLIENTE TIVER CONECTADO //
 io.on("connection", socket => {
+    console.log("Novo usuario conectado!");
+
     socket.on('entrarSala', ({usuarionome, meuid}) => {
         const usuario = usuarioEntrarSala(socket.id, usuarionome, nomeSala, meuid);
         socket.join(nomeSala);
@@ -30,7 +32,7 @@ io.on("connection", socket => {
     });
 
     socket.on('mensagemChat', mensagem => {
-        const usuario = getUsuario(socket.id);                                                              /* definir o usuario como o id tal da lista de usuarios */
+        const usuario = getUsuario(socket.id);                                                              
         io.to(nomeSala).emit('novaMensagem', mensagemFormatada(usuario.nome, mensagem, usuario.meuid));
     });
 
@@ -47,4 +49,4 @@ io.on("connection", socket => {
     });
 });
 
-server.listen(PORT, () => console.log(`servidor online aqui: ${lau}${PORT}`));
+server.listen(PORT, () => console.log(`servidor online aqui: ${local}${PORT}`));
