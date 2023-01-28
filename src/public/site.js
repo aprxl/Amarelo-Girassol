@@ -1,20 +1,30 @@
 const inputTexto = document.getElementById('enviarMensagem');   /* pega o id do input no chat.html           */
-const btnSair = document.getElementById('btnSair');             /* pega o id do botao de sair do jogo        */
 const socket = io();                                            /* define a variavel socket como a função io */
 
 const getLocalStorage = () =>JSON.parse(localStorage.getItem('usuario')) ?? [];           /* ta pegando os usuarios do index.js e passando eles para array */
 const { usuarionome, meuid } = Qs.parse(location.search, { ignoreQueryPrefix: true });    /* definindo variaveis com uns bgl esquisito                     */
 
+const data = JSON.parse(localStorage.getItem('usuario'));
 
 /* -------------------------------- SAIR DA SALA -------------------------------------------- */
 
-/* USUARIO SAIU DA SALA */  
-btnSair.addEventListener('click', function(){                       /* se clicar fazer a função                 */
+/* DEFININDO VARIAVEIS */ 
+const btnSair = document.getElementById('btnSair'); 
+
+/* FUNÇÕES */
+function saidoJogo(){
     const sairSala = confirm('Certeza que deseja sair da sala?');   /* perguntar se tem certeza se quer sair    */
     if (sairSala) {                                                 /* se clicar em sair                        */
         socket.emit('sairSala');                                    /* se ele confirmar que quer sair da sala:  */
         window.location.href='index.html';                          /* mandando o usuario ir pro index.html     */
-}});
+}}
+function instasair(){                                            
+    socket.emit('sairSala');                                    
+    window.location.href='index.html';
+}
+
+/* BOTÃO */
+btnSair.addEventListener('click', saidoJogo);
 
 
 /* ----------------------------------- CHAT--------------------------------------------------- */
@@ -160,6 +170,8 @@ const segundacarta = cartas[(Math.floor(Math.random() * (cartas.length)))];
 var pcarta = document.querySelector("#primeiracarta")
 var scarta = document.querySelector("#segundacarta")
 
+
+
 /* BOTAO EMBARALHAR */
 btnembaralhar.addEventListener("click", function(){
     if (containerembaralhar.style.display === "none"){
@@ -173,6 +185,12 @@ btnembaralhar.addEventListener("click", function(){
 btnembaralhar.addEventListener("click", function(){
     pcarta.innerHTML = primeiracarta;
     scarta.innerHTML = segundacarta;
+    const usuarioStorage = data;
+    if(usuarioStorage.meuId){
+        usuarioStorage.minhaMao.push(primeiracarta);
+        usuarioStorage.minhaMao.push(segundacarta);
+        console.log(usuarioStorage)
+    }
 });
 
 
@@ -183,13 +201,16 @@ var containercarta1 = document.querySelector(".carta1");
 var containercarta2 = document.querySelector(".carta2");
 
 /* FUNÇÕES */
-btnembaralhar.addEventListener("click", function(){
+function carta1aparecer(){
     if (containercarta1.style.display === "block"){
         containercarta1.style.display = "none";
     }else{
         containercarta1.style.display = "block";
     }
-});
+}
+
+btnembaralhar.addEventListener("click", carta1aparecer)
+
 btnembaralhar.addEventListener("click", function(){
     if (containercarta2.style.display === "block"){
         containercarta2.style.display = "none";
@@ -199,33 +220,64 @@ btnembaralhar.addEventListener("click", function(){
 });
 
 /* ------------------------------ PATACAS -------------------------------- */
+/* DEFININDO VARIAVEIS */
 var patacasb = document.getElementById("patacasbotao");
 
-patacasb.addEventListener("click", function(){
-    const usuarioStorage = getLocalStorage();
+/* FUNÇÕES */
+function adicionarPatacas(){
+    const usuarioStorage = data;
     /* pegar o id do carinha */
     if(usuarioStorage.meuId){
-        usuarioStorage.patacas++;
-        console.log(usuarioStorage)
-    }
-});
+        usuarioStorage.patacas = usuarioStorage.patacas+1;
+        console.log(usuarioStorage.patacas)
+    }}
 
-var tirarcarta = document.getElementById("tirarcarta");
-
-tirarcarta.addEventListener("click",function(){
-    const usuarioStorage = getLocalStorage();
+function tirarPatacas(){
+    const usuarioStorage = data;
+    /* pegar o id do carinha */
     if(usuarioStorage.meuId){
-        usuarioStorage.cartas = usuarioStorage.cartas - 1;
-        console.log(usuarioStorage)
-    }
+        usuarioStorage.patacas = usuarioStorage.patacas-1;
+        console.log(usuarioStorage.patacas)
+    }}
 
-});
+/* BOTÃO */
+patacasb.addEventListener("click", adicionarPatacas);
+
+
+/* ------------------------------- CARTAS ------------------------------- */
+var excluicarta = document.getElementById('tirarcarta');
+
+function tirarCarta(){
+    const usuarioStorage = data;
+    /* pegar o id do carinha */
+    if(usuarioStorage.meuId){
+        usuarioStorage.cartas = usuarioStorage.cartas-1;
+        usuarioStorage.minhaMao.shift()
+        carta1aparecer();
+        console.log(usuarioStorage)
+        if(usuarioStorage.cartas == 0 ){
+            instasair();
+        }
+    }}
+
+/* nao permite que ele volte pra sala */
+setInterval(()=>{
+    const usuarioStorage = data;
+    if(usuarioStorage.meuId){
+        if(usuarioStorage.cartas <= 0 ){
+            instasair();
+        }
+    }
+},10000);
+
+excluicarta.addEventListener("click", tirarCarta);
+
 
 /* --------------------------- SERVIDOR ---------------------------------- */
-
-socket.on("tirarPatacas", ()=>{
-    
-});
+setInterval(() => {
+    console.log(data);
+    socket.on('tudo', data);
+}, 5000);
 
 /* DEFIININDO OS USUARIOS NA SALA */
 socket.on('salaUsuarios', ({sala, usuarios}) => {
