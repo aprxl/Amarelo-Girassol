@@ -14,12 +14,19 @@ const app = express();
 const server = http.createServer(app);
 const PORT = 4000 || process.env.PORT;
 const io = socketIO(server);
-const local = "http://localhost/:"
+const local = "http://localhost:"
 
 
 app.use(express.static(path.join(__dirname, 'src/public')));
 
-const nomeSala = 'teste';
+const jsdom = require("jsdom");
+const { JSDOM } = jsdom;
+const dom = new JSDOM();
+global.document = dom.window.document;
+var room = document.getElementById('room');
+
+
+const nomeSala = room;
 
 // QUANDO O CLIENTE TIVER CONECTADO //
 io.on("connection", socket => {
