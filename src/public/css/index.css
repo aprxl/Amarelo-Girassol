@@ -2,7 +2,7 @@
 
 :root {
 	--dark-color-a: #000000;
-	--dark-color-b: rgb(223, 163, 99);
+	--dark-color-b: linear-gradient(45deg, rgb(241, 178, 178), rgb(156, 157, 254));
 	--light-color: #e6e9ff;
 	--success-color: #5cb85c;
 	--error-color: #d9534f;
@@ -20,7 +20,7 @@ body {
     width: 100%;
     background-size: cover;
     background-repeat: no-repeat;
-    background: rgb(156, 157, 254);
+    background: rgb(180, 181, 240);
 
 
 }
