@@ -176,28 +176,13 @@ body{
 .Embaralhar:hover .botaoem::before{
     background: #e9d063;
 }
-
-.alvo{
-    position: absolute;
-    top: 10%;
-    left: 30%;
-    width: 500px;
-    height: 600px;
-    display: none;
-    border-radius: 20px;
-    background-color: #ffffff;
-    overflow: hidden;
-
-}
-
-
 .menuacoes{
     position: absolute;
-    width: 210px;
+    width: 200px;
     height:auto;
     align-items: safe center;
     background-color:rgb(236, 160, 137);
-    top: 2%;
+    top: 7%;
     bottom: 0%;
     z-index: -10;
 
@@ -205,8 +190,7 @@ body{
 .menuacoes .acoes{
     position:relative;
     top: 15%;
-    margin: 7%;
-    margin-bottom: 10%;
+    margin: 5%;
     width: 180px;
     height: 50px;
     align-items: center;
@@ -214,8 +198,6 @@ body{
     border-style: hidden;
     border-radius: 6px;
     box-shadow: none;
-    z-index: 10;
-    
     
     
 }
