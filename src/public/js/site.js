@@ -2,10 +2,10 @@ const inputTexto = document.getElementById('enviarMensagem');   /* pega o id do 
 const socket = io();                                            /* define a variavel socket como a função io */
 
 const getLocalStorage = () =>JSON.parse(localStorage.getItem('usuario')) ?? [];           /* ta pegando os usuarios do index.js e passando eles para array */
-const { usuarionome, meuid } = Qs.parse(location.search, { ignoreQueryPrefix: true });    /* definindo variaveis com uns bgl esquisito                     */
+const { usuarionome, meuid, sala } = Qs.parse(location.search, { ignoreQueryPrefix: true });    /* definindo variaveis com uns bgl esquisito                     */
 
 const data = JSON.parse(localStorage.getItem('usuario'));
-
+console.log(usuarionome, meuid, sala)
 /* -------------------------------- SAIR DA SALA -------------------------------------------- */
 
 /* DEFININDO VARIAVEIS */ 
@@ -30,7 +30,7 @@ btnSair.addEventListener('click', saidoJogo);
 /* ----------------------------------- CHAT--------------------------------------------------- */
 
 /* INFORMA QUE O USUARIO ENTROU NA SALA */
-socket.emit('entrarSala', { usuarionome, meuid});
+socket.emit('entrarSala', { usuarionome, meuid, sala});
 
 /* ADICIONA A MSG APERTANDO ENTER */
 inputTexto.addEventListener('keyup', function(e){   /* se apertar a tecla:                  */

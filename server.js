@@ -19,7 +19,7 @@ const local = "http://localhost/:"
 
 app.use(express.static(path.join(__dirname, 'src/public')));
 
-const nomeSala = 'teste'
+const nomeSala = 'teste';
 
 // QUANDO O CLIENTE TIVER CONECTADO //
 io.on("connection", socket => {
