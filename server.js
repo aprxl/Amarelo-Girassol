@@ -5,7 +5,7 @@ const path = require("path");
 const http = require("http");
 const socketIO = require("socket.io");
 
-const { usuarioEntrarSala, getUsuariosSala, mensagemFormatada, getUsuario, usuarioSairSala } = require('./usuario');
+const { usuarioEntrarSala, getUsuariosSala, mensagemFormatada, getUsuario, usuarioSairSala, getRoomUsers } = require('./usuario');
 
 
 

@@ -1,19 +1,19 @@
 const usuarios = [];
-const moment = require('moment');
+const moment = require('moment');  /* USA PRA ENVIAR MENSAGEM */
 moment.locale('pt-br');
 
 function usuarioEntrarSala(id, nome, sala, meuid) {
     const usuario = {id, nome, sala, meuid};
     usuarios.push(usuario);
     return usuario;
-}
+} /* OK */
 
 function usuarioSairSala(id) {
     const index = usuarios.findIndex(usuario => usuario.id === id);
     if (index !== -1){
         return usuarios.splice(index, 1)[0];
     }
-}
+} /* OK */
 
 function mensagemFormatada(usuarioNome, mensagemParam, meuid) {
     var mensagem = mensagemParam ? mensagemParam : "Oi, acabei de entrar no jogo";
@@ -23,7 +23,7 @@ function mensagemFormatada(usuarioNome, mensagemParam, meuid) {
         horario: moment().format('lll'),
         meuid
     };
-}
+} /* OK */
 
 function getUsuariosSala() {
     return usuarios;
@@ -33,10 +33,15 @@ function getUsuario(idUsuario) {
     return usuarios.find(usuario => usuario.id === idUsuario);
 }
 
+function getRoomUsers(sala){
+    return usuarios.filter(usuario => usuario.sala === sala);
+}
+
 module.exports = {
     usuarioEntrarSala,
     getUsuariosSala,
     mensagemFormatada,
     getUsuario,
-    usuarioSairSala
+    usuarioSairSala, 
+    getRoomUsers
 };
