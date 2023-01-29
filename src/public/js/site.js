@@ -284,6 +284,90 @@ setInterval(()=>{
 
 excluicarta.addEventListener("click", tirarCarta);
 
+/* ------------------------- ESCOLHENDO O USUARIO ------------------------- */
+
+const bobo = document.getElementById('Bobo');
+const cavaleiro = document.getElementById('Cavaleiro');
+const conselheiro = document.getElementById('Conselheiro');
+const duque = document.getElementById('Duque');
+const eremita = document.getElementById('Eremita');
+const escriba = document.getElementById('Escriba');
+const monarca = document.getElementById('Monarca');
+
+var menuacoes = document.querySelector('.menuacoes');
+var alvo = document.querySelector('.alvo');
+
+const j1 = document.getElementById("j1");
+const j2 = document.getElementById("j2");
+
+
+
+function escolheralvo(){
+    if(j1.addEventListener("click")){
+        desapareceralvo()
+        return j1
+    }else if(j2.addEventListener("click")){
+        desapareceralvo()
+        return j2
+    }
+}
+
+function desapareceralvo(){
+    if (alvo.style.display === "none"){
+        alvo.style.display = "block";
+    }else{
+        alvo.style.display = "none";
+    }
+}
+
+function apareceralvo(){
+    if (alvo.style.display === "block"){
+        alvo.style.display = "none";
+    }else{
+        alvo.style.display = "block";
+    }
+}
+
+function desaparecerbloco(){
+    if (menuacoes.style.display === "none"){
+        menuacoes.style.display = "block";
+    }else{
+        menuacoes.style.display = "none";
+    }
+}
+
+
+
+bobo.addEventListener("click", desaparecerbloco());
+   
+cavaleiro.addEventListener("click", function(){
+    apareceralvo();
+
+});
+
+conselheiro.addEventListener("click", function(){
+    apareceralvo();
+
+});
+
+duque.addEventListener("click", function(){
+    apareceralvo();
+
+});
+
+eremita.addEventListener("click", function(){
+
+});
+
+escriba.addEventListener("click", function(){
+
+});
+
+monarca.addEventListener("click", function(){
+
+});
+
+
 
 /* --------------------------- SERVIDOR ---------------------------------- */
 setInterval(() => {
