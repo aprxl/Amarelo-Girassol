@@ -13,13 +13,16 @@ nav{
     background-color: #000000;
     align-items: center;
     justify-content: space-between;
-    padding: 0 50px 0 100px;
+    padding: 0 0 0 30px;
     flex-wrap: wrap;
 }
 nav .logo{
     color: rgb(255, 255, 255);
     font-size: 35px;
     font-weight: 600;
+    position: relative;
+    left: 0%;
+    
 }
 nav ul{
     display: flex;
@@ -89,7 +92,7 @@ nav .menu-btn i{
 
 body{
     /* background-image: linear-gradient(45deg, rgb(241, 178, 178), rgb(156, 157, 254)); */
-    background-image: linear-gradient(45deg, rgb(241, 178, 178), rgb(156, 157, 254));
+    background-image: linear-gradient(45deg, rgb(207, 120, 120), rgb(246, 194, 131));
     /* overflow: hidden; */
 }
 
@@ -117,10 +120,11 @@ body{
     width: 500px;
     height: 300px;
     border-radius: 40px;
+    border-style: hidden;
     overflow: hidden;
     align-items: center;
     justify-content: center;
-    background: white;
+    background: whitesmoke;
 
     display: "block";
 }
@@ -129,14 +133,46 @@ body{
     position: absolute;
     width: 600px;
     height: 600px;
-    background: linear-gradient(rgb(19, 194, 156), rgb(185, 212, 29));
+    background: linear-gradient(rgb(194, 115, 19), rgb(180, 75, 75));
+    border-style: hidden;
     animation: cartaem 1.3s ease infinite;
     transition: 1s ease;
 }
 .Embaralhar:hover .botaoem::before{
     background: #e9d063;
 }
+.menuacoes{
+    position: absolute;
+    width: 200px;
+    height:auto;
+    align-items: safe center;
+    background-color:rgb(236, 160, 137);
+    top: 7%;
+    bottom: 0%;
+    z-index: -10;
 
+}
+.menuacoes .acoes{
+    position:relative;
+    top: 15%;
+    margin: 5%;
+    width: 180px;
+    height: 50px;
+    align-items: center;
+    background-color:#a14b35;
+    border-style: hidden;
+    border-radius: 6px;
+    box-shadow: none;
+    
+    
+}
+.patacas2{
+    position: relative;
+    top: 20px;
+    left: 30%;
+    display: none;
+}
+ 
 
 @keyframes cartaem{
     100%{
@@ -441,9 +477,4 @@ body{
     color: #e8f1f3;
     font-size: 2em;
     z-index: 10;
-}
-.patacas2{
-    position: absolute;
-    top: 10%;
-    left: 30%;
 }
