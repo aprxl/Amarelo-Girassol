@@ -49,6 +49,7 @@ a {
 	max-width: 500px;
 	margin: 80px auto;
 	color: #fff;
+    z-index: 100;
 }
 
 .join-header {
@@ -111,6 +112,7 @@ a {
     position: absolute;
     top: 15%;
     left: 65%;
+    z-index: 1;
 }
 
 /* CARTAS */
