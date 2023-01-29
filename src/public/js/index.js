@@ -9,6 +9,7 @@ function btnEntrar() {  /* botao que faz ele ir pra sala */
     var numerocartas = 2;
     var pronto1 = false;
     const meubaralho = [];
+    var room = document.getElementById('room').value;
   
     setLocalStorage({
         nome: inputNome, /* nome do fulano */
@@ -21,8 +22,10 @@ function btnEntrar() {  /* botao que faz ele ir pra sala */
 
         pronto: pronto1, /* ver se ele ta pronto pra começar o jogo */
 
-        minhaMao: meubaralho /* Ver quais cartas ele tem */
+        minhaMao: meubaralho, /* Ver quais cartas ele tem */
+
+        sala: room
     });
     
-    window.location.href="chat.html?usuarionome="+ inputNome + "&meuid=" + idUsuario; /* faz ele ir para o endereço da web com o chat.html */
+    window.location.href="chat.html?usuarionome="+ inputNome + "&meuid=" + idUsuario + "&sala=" + room; /* faz ele ir para o endereço da web com o chat.html */
 }
