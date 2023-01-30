@@ -29,7 +29,7 @@ io.on("connection", socket => {
         socket.join(usuario.sala);
         socket.broadcast.to(sala).emit('novaMensagem', mensagemFormatada(usuario.nome));
 
-        io.to(usuario.sala).emit("salaUsuarios", {sala: usuario.sala, usuarios: getUsuariosSala(),});
+        io.to(usuario.sala).emit("salaUsuarios", {sala: usuario.sala, usuarios: getRoomUsers(usuario.sala),});
     });
 
     socket.on('mensagemChat', mensagem => {
