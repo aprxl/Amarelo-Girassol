@@ -167,13 +167,13 @@ btnjogadores.addEventListener("click",function(){
 /* DEFININDO VARIAVEIS */
 var btnembaralhar = document.getElementById("embaralhar");
 var containerembaralhar = document.querySelector(".Embaralhar");
+var containerCarta1 = document.querySelector(".carta1");
+var containerCarta2 = document.querySelector(".carta2");
 const cartas = ["bobo", "conselheiro", "eremita", "cavalheiro", "duque", "escriba", "monarca"]
-const primeiracarta = cartas[(Math.floor(Math.random() * (cartas.length)))];
-const segundacarta = cartas[(Math.floor(Math.random() * (cartas.length)))];
+const cartasUrl = ["../Imagens/Boba2.png", "../Imagens/Conselheiro.png", "../Imagens/Eremita.png", "../Imagens/Cavaleiro.png", "../Imagens/Duque.png", "../Imagens/Escriba2.png", "../Imagens/Monarca.png"]
+
 var pcarta = document.querySelector("#primeiracarta")
 var scarta = document.querySelector("#segundacarta")
-
-
 
 /* BOTAO EMBARALHAR */
 btnembaralhar.addEventListener("click", function(){
@@ -186,6 +186,16 @@ btnembaralhar.addEventListener("click", function(){
 
 /* ESCOLHENDO AS CARTAS */
 btnembaralhar.addEventListener("click", function(){
+    // Embaralhar as cartas e retiralas do deck.
+    const posicao1 = (Math.floor(Math.random() * (cartas.length)));
+    const posicao2 = (Math.floor(Math.random() * (cartas.length)));
+
+    const primeiracarta = cartas[posicao1];
+    const urlPrimeiraCarta = cartasUrl[posicao1];
+
+    const segundacarta = cartas[posicao2];
+    const urlSegundaCarta = cartasUrl[posicao2];
+    
     pcarta.innerHTML = primeiracarta;
     scarta.innerHTML = segundacarta;
     const usuarioStorage = data;
@@ -194,6 +204,9 @@ btnembaralhar.addEventListener("click", function(){
         usuarioStorage.minhaMao.push(segundacarta);
         console.log(usuarioStorage)
     }
+
+    containerCarta1.style.backgroundImage = "url(" + urlPrimeiraCarta + ")";
+    containerCarta2.style.backgroundImage = "url(" + urlSegundaCarta + ")";
 });
 
 

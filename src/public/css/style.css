@@ -439,45 +439,26 @@ body{
 
 
 /* css das cartas */
-.carta1{
+.carta1 {
     position: absolute;
     width: 300px;
     height: 400px;
     justify-content: center;
     align-items: center;
-    background: #434651;
+
+    /* Background */
+    background-image: url("..\\Imagens\\Boba2.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+
     overflow: hidden;
     border-radius: 20px;
     top: 56%;
     left: 23%;
     z-index: -20;
-
     display: none;
+}
 
-}
-.carta1::before{
-    content: "";
-    position: absolute;
-    width: 150px;
-    height: 140%;
-    background: linear-gradient(red, yellow);
-    animation: animate 5s linear infinite;
-}
-@keyframes animate{
-    0%{
-        transform: rotate(0deg);
-    }
-    100%{
-        transform: rotate(360deg);
-    }
-}
-.carta1::after{
-    content: '';
-    position: absolute;
-    inset: 4px;
-    background: #434651;
-    border-radius: 20px;
-}
 .carta1 p{
     position: relative;
     color: #e8f1f3;
@@ -485,13 +466,18 @@ body{
     z-index: 10;
 }
 
-.carta2{
+.carta2 {
     position: absolute;
     width: 300px;
     height: 400px;
     justify-content: center;
     align-items: center;
-    background: #434651;
+
+    /* Background */
+    background-image: url("..\\Imagens\\Conselheiro.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+
     overflow: hidden;
     border-radius: 20px;
     top: 56%;
@@ -499,21 +485,7 @@ body{
     z-index: -20;
     display: none;
 }
-.carta2::before{
-    content: "";
-    position: absolute;
-    width: 150px;
-    height: 140%;
-    background: linear-gradient(red, yellow);
-    animation: animate 5s linear infinite;
-}
-.carta2::after{
-    content: '';
-    position: absolute;
-    inset: 4px;
-    background: #434651;
-    border-radius: 20px;
-}
+
 .carta2 p{
     position: relative;
     color: #e8f1f3;
