@@ -37,6 +37,14 @@ function getRoomUsers(sala){
     return usuarios.filter(usuario => usuario.sala === sala);
 }
 
+function formatMessage(username, text) {
+    return {
+      username,
+      text,
+      time: moment().format('h:mm a')
+    };
+  }
+
 module.exports = {
     usuarioEntrarSala,
     getUsuariosSala,

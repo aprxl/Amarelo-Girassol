@@ -8,6 +8,9 @@ const data = JSON.parse(localStorage.getItem('usuario'));
 console.log(usuarionome, meuid, sala)
 /* -------------------------------- SAIR DA SALA -------------------------------------------- */
 
+const roomName = document.getElementById('room-name');
+const userList = document.getElementById('users');
+
 /* DEFININDO VARIAVEIS */ 
 const btnSair = document.getElementById('btnSair'); 
 
@@ -32,20 +35,42 @@ btnSair.addEventListener('click', saidoJogo);
 /* INFORMA QUE O USUARIO ENTROU NA SALA */
 socket.emit('entrarSala', { usuarionome, meuid, sala});
 
+
+// Get room and users
+socket.on('salaUsuarios', ({ sala, usuarios }) => {
+    outputRoomName(sala);
+    outputUsers(usuarios);
+  });
+
+// Add room name to DOM
+function outputRoomName(sala) {
+    roomName.innerText = sala;
+  }
+  
+  // Add users to DOM
+  function outputUsers(usuarios) {
+    userList.innerHTML = '';
+    usuarios.forEach((usuario) => {
+      const li = document.createElement('li');
+      li.innerText = usuario.nome;
+      userList.appendChild(li);
+    });
+  }
+
 /* ADICIONA A MSG APERTANDO ENTER */
-inputTexto.addEventListener('keyup', function(e){   /* se apertar a tecla:                  */
-    var key = e.key === 'Enter';                    /* definindo o botao (enter)            */
-    if(key && this.value){                          /* se a tecla pressionada for a enter   */
-        socket.emit('mensagemChat', this.value);    /* emitir o que tava escrito            */
+inputTexto.addEventListener('keyup', function(e){   
+    var key = e.key === 'Enter';                    
+    if(key && this.value){                          
+        socket.emit('mensagemChat', this.value);    
         this.value = '';
 }});
 
 /* FUNÇAO DE ADICIONAR NOVA MENSAGEM */
-function adicionarNovaMensagem(mensagem) {                          /* recebe como parametro a mensagem                  */
-    const usuarioStorage = getLocalStorage();                       /* definir o json do usuario como uma variavel       */
-    let minhaMensagem = false;                                      /* definir a variavel minhaMensagem como false       */
-    if(mensagem.meuid) {                                            /* pegar a mensagem pelo meu id                      */
-        minhaMensagem = mensagem.meuid === usuarioStorage.meuId;    /* define minha mensagem tendo o mesmo id do usuario */
+function adicionarNovaMensagem(mensagem) {                          
+    const usuarioStorage = getLocalStorage();                       
+    let minhaMensagem = false;                                      
+    if(mensagem.meuid) {                                            
+        minhaMensagem = mensagem.meuid === usuarioStorage.meuId;    
     }
 
     /* ---------------- DEFININDO VARIAVEIS ------------------ */
@@ -84,28 +109,6 @@ function criarElementoHtml(nomeElemento, classeElemento, atributosElemento) {
 function realizarScrollChat() {
     var elem = document.getElementById('chat');
     elem.scrollTop = elem.scrollHeight;
-}
-
-
-/* ---------------------- LISTA DE USUARIOS -------------------------------- */
-function criarListaUsuarios(usuarioNome) {
-
-    /* ---------- DEFININDO VARIAVEIS ----------------- */
-    var listaUsuarios = document.getElementById("listaUsuarios");
-    var liUsuario = criarElementoHtml("li", ["clearfix"]);
-    var divDescricaoUsuario = criarElementoHtml('div', ["about"]);
-    var divNomeUsuario = criarElementoHtml('div', ["name"]);
-    var divStatusUsuario = criarElementoHtml('div', ["status"]);
-    var iconeStatus = criarElementoHtml("i" , ["fa", "fa-circle", "online"]);
-
-    /* ----------- CRIANDO DIVS PRO HTML -------------- */
-    iconeStatus.innerHTML = "online";
-    divNomeUsuario.innerHTML = usuarioNome;
-    divStatusUsuario.appendChild(iconeStatus);
-    divDescricaoUsuario.appendChild(divNomeUsuario);
-    divDescricaoUsuario.appendChild(divStatusUsuario);
-    liUsuario.appendChild(divDescricaoUsuario);
-    listaUsuarios.appendChild(liUsuario);
 }
 
 

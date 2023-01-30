@@ -27,9 +27,9 @@ io.on("connection", socket => {
     socket.on('entrarSala', ({usuarionome, meuid, sala}) => {
         const usuario = usuarioEntrarSala(socket.id, usuarionome, sala, meuid);
         socket.join(usuario.sala);
-
         socket.broadcast.to(sala).emit('novaMensagem', mensagemFormatada(usuario.nome));
-        io.to(usuario.sala).emit("salaUsuarios", {sala: usuario.sala, usuarios: getUsuariosSala()});
+
+        io.to(usuario.sala).emit("salaUsuarios", {sala: usuario.sala, usuarios: getUsuariosSala(),});
     });
 
     socket.on('mensagemChat', mensagem => {
@@ -45,7 +45,8 @@ io.on("connection", socket => {
         const usuario = usuarioSairSala(socket.id);
         if (usuario) {
             io.to(usuario.sala).emit('novaMensagem', mensagemFormatada(usuario.nome, 'saiu da sala', usuario.id));
-            io.to(usuario.sala).emit('salaUsuarios', {sala: usuario.sala, usuarios: getUsuariosSala() });
+
+            io.to(usuario.sala).emit('salaUsuarios', {sala: usuario.sala, usuarios: getRoomUsers(usuario.sala), });
         }
     });
 });
