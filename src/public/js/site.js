@@ -270,7 +270,7 @@ setInterval(()=>{
     const usuarioStorage = data;
     if(usuarioStorage.meuId){
         /* não deixa ter mais de 2 cartas ou menos de 0 */
-        if(usuarioStorage.cartas <= 0 || usuarioStorage > 2){
+        if(usuarioStorage.cartas <= 0 || usuarioStorage.cartas > 2){
             instasair();
             alert("não permitimos cheters nesse jogo !"); 
         }
