@@ -36,27 +36,6 @@ btnSair.addEventListener('click', saidoJogo);
 /* INFORMA QUE O USUARIO ENTROU NA SALA */
 socket.emit('entrarSala', { usuarionome, meuid, sala});
 
-// Get room and users
-socket.on('salaUsuarios', ({ sala, usuarios }) => {
-    outputRoomName(sala);
-    outputUsers(usuarios);
-  });
-
-// Add room name to DOM
-function outputRoomName(sala) {
-    roomName.innerText = sala;
-  }
-  
-  // Add users to DOM
-  function outputUsers(usuarios) {
-    userList.innerHTML = '';
-    usuarios.forEach((usuario) => {
-      const li = document.createElement('li');
-      li.innerText = usuario.nome;
-      userList.appendChild(li);
-    });
-  }
-
 /* ADICIONA A MSG APERTANDO ENTER */
 inputTexto.addEventListener('keyup', function(e){   
     var key = e.key === 'Enter';                    
@@ -294,16 +273,29 @@ setInterval(() => {
     socket.on('tudo', data);
 }, 5000);
 
-/* DEFIININDO OS USUARIOS NA SALA */
-socket.on('salaUsuarios', ({sala, usuarios}) => {
-    document.getElementById("salaId").innerHTML = sala;
-    document.getElementById("listaUsuarios").innerHTML = '';
-    for (var usuario of usuarios) {
-        criarListaUsuarios(usuario.nome);
-    }
-});
 
 /* ADICIONANDO MENSAGEM */
 socket.on('novaMensagem', (mensagem) => {
     adicionarNovaMensagem(mensagem);
 });
+
+// Get room and users
+socket.on('salaUsuarios', ({ sala, usuarios }) => {
+    outputRoomName(sala);
+    outputUsers(usuarios);
+  });
+
+// Add room name to DOM
+function outputRoomName(sala) {
+    roomName.innerText = sala;
+  }
+  
+  // Add users to DOM
+  function outputUsers(usuarios) {
+    userList.innerHTML = '';
+    usuarios.forEach((usuario) => {
+      const li = document.createElement('li');
+      li.innerText = usuario.nome;
+      userList.appendChild(li);
+    });
+  }

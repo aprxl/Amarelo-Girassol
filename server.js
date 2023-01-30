@@ -23,6 +23,7 @@ app.use(express.static(path.join(__dirname, 'src/public')));
 // QUANDO O CLIENTE TIVER CONECTADO //
 io.on("connection", socket => {
     console.log("Novo usuario conectado!");
+
     socket.on('entrarSala', ({usuarionome, meuid, sala}) => {
         const usuario = usuarioEntrarSala(socket.id, usuarionome, sala, meuid);
         socket.join(usuario.sala);
