@@ -1,8 +1,8 @@
-const inputTexto = document.getElementById('enviarMensagem');   /* pega o id do input no chat.html           */
-const socket = io();                                            /* define a variavel socket como a função io */
+const inputTexto = document.getElementById('enviarMensagem');   
+const socket = io();                                            
 
-const getLocalStorage = () =>JSON.parse(localStorage.getItem('usuario')) ?? [];           /* ta pegando os usuarios do index.js e passando eles para array */
-const { usuarionome, meuid, sala } = Qs.parse(location.search, { ignoreQueryPrefix: true });    /* definindo variaveis com uns bgl esquisito                     */
+const getLocalStorage = () =>JSON.parse(localStorage.getItem('usuario')) ?? [];           
+const { usuarionome, meuid, sala } = Qs.parse(location.search, { ignoreQueryPrefix: true });    
 
 const data = JSON.parse(localStorage.getItem('usuario'));
 console.log(usuarionome, meuid, sala)
@@ -16,11 +16,12 @@ const btnSair = document.getElementById('btnSair');
 
 /* FUNÇÕES */
 function saidoJogo(){
-    const sairSala = confirm('Certeza que deseja sair da sala?');   /* perguntar se tem certeza se quer sair    */
-    if (sairSala) {                                                 /* se clicar em sair                        */
-        socket.emit('sairSala');                                    /* se ele confirmar que quer sair da sala:  */
-        window.location.href='index.html';                          /* mandando o usuario ir pro index.html     */
+    const sairSala = confirm('Certeza que deseja sair da sala?');   
+    if (sairSala) {                                                 
+        socket.emit('sairSala');                                   
+        window.location.href='index.html';                         
 }}
+  
 function instasair(){                                          
     socket.emit('sairSala');                                    
     window.location.href='index.html';
@@ -34,7 +35,6 @@ btnSair.addEventListener('click', saidoJogo);
 
 /* INFORMA QUE O USUARIO ENTROU NA SALA */
 socket.emit('entrarSala', { usuarionome, meuid, sala});
-
 
 // Get room and users
 socket.on('salaUsuarios', ({ sala, usuarios }) => {
@@ -147,7 +147,7 @@ btn.addEventListener("click",function(){
 
 /* DEFINDO VARIAVEIS */
 var btnjogadores = document.getElementById("mostrarjogadores");
-var containerjogadores = document.querySelector(".box");
+var containerjogadores = document.querySelector(".chat-container");
 
 /* FUNÇÕES */
 btnjogadores.addEventListener("click", function(){

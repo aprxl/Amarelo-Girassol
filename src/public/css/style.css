@@ -94,13 +94,16 @@ nav .menu-btn i{
 body{
     /* background-image: linear-gradient(45deg, rgb(241, 178, 178), rgb(156, 157, 254)); */
     background-image: linear-gradient(45deg, rgb(207, 120, 120), rgb(246, 194, 131));
-    /* overflow: hidden; */
+    overflow: hidden;
 }
 
-/* CSS DOS JOGADORES NA SALA */
-/* .box{
+
+.chat-container {
+	background: #fff;
+	margin: 30px auto;
+	overflow: hidden;
     position: absolute;
-    top: 10%;
+    top: 7%;
     left: 63%;
     width: 500px;
     height: 600px;
@@ -108,44 +111,8 @@ body{
     border-radius: 20px;
     background-color: #ffffff;
     overflow: hidden;
-}
-.chat-sidebar {
-	background: var(--dark-color-b);
-	color: rgb(0, 0, 0);
-	padding: 9px 9px 9px;
-	overflow-y: scroll;
-    overflow: hidden;
-    background-color: rgb(240, 173, 74);
-}
+    z-index: -1;
 
-.chat-sidebar h2 {
-	font-size: 30px;
-	background: rgba(0, 0, 0, 0.1);
-	padding: 10px;
-	margin-bottom: 20px;
-}
-
-.chat-sidebar h3 {
-    font-size: 35px;
-    text-align: center;
-	margin-bottom: 15px;
-}
-
-.chat-sidebar ul li {
-	padding: 10px 0;
-}
-@media (max-width: 700px) {
-	
-	.chat-sidebar {
-		display: none;
-	}
-} */
-
-.chat-container {
-	max-width: 1100px;
-	background: #fff;
-	margin: 30px auto;
-	overflow: hidden;
 }
 
 .chat-sidebar {
@@ -153,6 +120,7 @@ body{
 	color: rgb(0, 0, 0);
 	padding: 20px 20px 60px;
 	overflow-y: scroll;
+    overflow: hidden;
 }
 
 .chat-sidebar h2 {

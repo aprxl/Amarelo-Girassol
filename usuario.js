@@ -25,9 +25,6 @@ function mensagemFormatada(usuarioNome, mensagemParam, meuid) {
     };
 } /* OK */
 
-function getUsuariosSala() {
-    return usuarios;
-}
 
 function getUsuario(idUsuario) {
     return usuarios.find(usuario => usuario.id === idUsuario);
@@ -47,7 +44,6 @@ function formatMessage(username, text) {
 
 module.exports = {
     usuarioEntrarSala,
-    getUsuariosSala,
     mensagemFormatada,
     getUsuario,
     usuarioSairSala, 
