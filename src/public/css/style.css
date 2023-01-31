@@ -448,7 +448,7 @@ body{
 
     /* Background */
     background-image: url("..\\Imagens\\Boba2.png");
-    background-size: contain;
+    background-size: cover;
     background-repeat: no-repeat;
 
     overflow: hidden;
@@ -475,7 +475,7 @@ body{
 
     /* Background */
     background-image: url("..\\Imagens\\Conselheiro.png");
-    background-size: contain;
+    background-size: cover;
     background-repeat: no-repeat;
 
     overflow: hidden;
