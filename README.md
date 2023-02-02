@@ -12,10 +12,6 @@
 
 - Fernanda Queiroz
 
-- Bruno Bragança
-
-- Tales Mazzoccante
-
 ### Descrição (description)
 
 Repositório dedicado ao desenvolvimento do projeto final de D.S., no segundo semestre de 2022.
