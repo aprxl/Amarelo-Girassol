@@ -3,7 +3,7 @@ const moment = require('moment');  /* USA PRA ENVIAR MENSAGEM */
 moment.locale('pt-br');
 
 function usuarioEntrarSala(id, nome, sala, meuid) {
-    const usuario = {id, nome, sala, meuid};
+    const usuario = {id, nome, sala, meuid, pronto: false};
     usuarios.push(usuario);
     return usuario;
 } /* OK */
@@ -34,6 +34,14 @@ function getRoomUsers(sala){
     return usuarios.filter(usuario => usuario.sala === sala);
 }
 
+function setReady(idUsuario, state) {
+    const user = usuarios.find(u => u.id === idUsuario);
+    if (!user)
+        return;
+
+    user.pronto = state;
+}
+
 function formatMessage(username, text) {
     return {
       username,
@@ -47,5 +55,6 @@ module.exports = {
     mensagemFormatada,
     getUsuario,
     usuarioSairSala, 
-    getRoomUsers
+    getRoomUsers,
+    setReady
 };

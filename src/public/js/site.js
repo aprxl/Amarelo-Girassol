@@ -30,7 +30,6 @@ function instasair(){
 /* BOTÃO */
 btnSair.addEventListener('click', saidoJogo);
 
-
 /* ----------------------------------- CHAT--------------------------------------------------- */
 
 /* INFORMA QUE O USUARIO ENTROU NA SALA */
@@ -40,7 +39,9 @@ socket.emit('entrarSala', { usuarionome, meuid, sala});
 socket.on('salaUsuarios', ({ sala, usuarios }) => {
     outputRoomName(sala);
     outputUsers(usuarios);
-  });
+
+    listaJogadores = usuarios;
+});
 
 // Add room name to DOM
 function outputRoomName(sala) {
@@ -122,6 +123,8 @@ function menuShow() {
         ul.classList.add('open');
     }
 }
+
+/* --------------------------- Rounds --------------------------- */
 
 
 /* -------------------------------- BOTOES ------------------------------- */
@@ -223,6 +226,8 @@ btnembaralhar.addEventListener("click", function(){
 
     containerCarta1.style.backgroundImage = "url(" + urlPrimeiraCarta + ")";
     containerCarta2.style.backgroundImage = "url(" + urlSegundaCarta + ")";
+
+    socket.emit('ready', {});
 });
 
 
