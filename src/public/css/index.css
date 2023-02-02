@@ -1,8 +1,8 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
 
 :root {
-	--dark-color-a: #000000;
-	--dark-color-b: linear-gradient(45deg, rgb(241, 178, 178), rgb(156, 157, 254));
+	--dark-color-a: #2d2449;
+	--dark-color-b: linear-gradient(45deg, rgb(223, 138, 159), rgb(148, 149, 233));
 	--light-color: #e6e9ff;
 	--success-color: #5cb85c;
 	--error-color: #d9534f;
@@ -50,6 +50,7 @@ a {
 	margin: 80px auto;
 	color: #fff;
     z-index: 100;
+    
 }
 
 .join-header {
@@ -58,11 +59,14 @@ a {
 	background: var(--dark-color-a);
 	border-top-left-radius: 5px;
 	border-top-right-radius: 5px;
+    
 }
 
 .join-main {
 	padding: 30px 40px;
 	background: var(--dark-color-b);
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
 }
 
 .join-main p {

@@ -164,7 +164,7 @@ btnjogadores.addEventListener("click",function(){
 /* DEFININDO VARIAVEIS */
 var btnembaralhar = document.getElementById("embaralhar");
 var containerembaralhar = document.querySelector(".Embaralhar");
-const cartas = ["bobo", "conselheiro", "eremita", "cavalheiro", "duque", "escriba", "monarca"]
+const cartas = ["bobo", "conselheiro", "eremita", "cavaleiro", "duque", "escriba", "monarca"];
 const primeiracarta = cartas[(Math.floor(Math.random() * (cartas.length)))];
 const segundacarta = cartas[(Math.floor(Math.random() * (cartas.length)))];
 var pcarta = document.querySelector("#primeiracarta")
@@ -180,6 +180,22 @@ btnembaralhar.addEventListener("click", function(){
         containerembaralhar.style.display = "none";
     }
 });
+
+/*-----------------------------MUDAR IMAGEM-------------------------------*/
+
+/*function mudarCarta(nomeCarta){
+    const cartas = ["bobo", "conselheiro", "eremita", "cavaleiro", "duque", "escriba", "monarca"];
+    const caminhos= ["../Imagens/Boba2.png", "../Imagens/Conselheiro.png", "../Imagens/Eremita.png", "../Imagens/Cavaleiro.png", "../Imagens/Duque.png", "../Imagens/Escriba2.png", "../Imagens/Monarca.png"];
+
+    let idx = cartas.indexOf(nomeCarta);
+    if(idx<0){
+        return;
+    }
+
+    const div = document.querySelector('.carta1');
+    div.style.backgroundImage = `url('${caminhos[idx]}')`;
+
+}*/
 
 /* ESCOLHENDO AS CARTAS */
 btnembaralhar.addEventListener("click", function(){
@@ -218,6 +234,7 @@ btnembaralhar.addEventListener("click", function(){
         containercarta2.style.display = "block";
     }
 });
+
 
 /* ------------------------------ PATACAS -------------------------------- */
 /* DEFININDO VARIAVEIS */
