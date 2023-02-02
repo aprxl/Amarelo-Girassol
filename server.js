@@ -5,7 +5,7 @@ const path = require("path");
 const http = require("http");
 const socketIO = require("socket.io");
 
-const { usuarioEntrarSala, getUsuariosSala, mensagemFormatada, getUsuario, usuarioSairSala, getRoomUsers } = require('./usuario');
+const { usuarioEntrarSala, mensagemFormatada, getUsuario, usuarioSairSala, getRoomUsers } = require('./usuario');
 
 
 
@@ -23,13 +23,12 @@ app.use(express.static(path.join(__dirname, 'src/public')));
 // QUANDO O CLIENTE TIVER CONECTADO //
 io.on("connection", socket => {
     console.log("Novo usuario conectado!");
-
     socket.on('entrarSala', ({usuarionome, meuid, sala}) => {
         const usuario = usuarioEntrarSala(socket.id, usuarionome, sala, meuid);
         socket.join(usuario.sala);
-
         socket.broadcast.to(sala).emit('novaMensagem', mensagemFormatada(usuario.nome));
-        io.to(usuario.sala).emit("salaUsuarios", {sala: usuario.sala, usuarios: getUsuariosSala()});
+
+        io.to(usuario.sala).emit("salaUsuarios", {sala: usuario.sala, usuarios: getRoomUsers(usuario.sala),});
     });
 
     socket.on('mensagemChat', mensagem => {
@@ -37,15 +36,12 @@ io.on("connection", socket => {
         io.to(usuario.sala).emit('novaMensagem', mensagemFormatada(usuario.nome, mensagem, usuario.meuid));
     });
 
-    /* iniciar o jogo /
-
-    / se clicar no escriba */
-
     socket.on('sairSala', () => {
         const usuario = usuarioSairSala(socket.id);
         if (usuario) {
             io.to(usuario.sala).emit('novaMensagem', mensagemFormatada(usuario.nome, 'saiu da sala', usuario.id));
-            io.to(usuario.sala).emit('salaUsuarios', {sala: usuario.sala, usuarios: getUsuariosSala() });
+
+            io.to(usuario.sala).emit('salaUsuarios', {sala: usuario.sala, usuarios: getRoomUsers(usuario.sala), });
         }
     });
 });

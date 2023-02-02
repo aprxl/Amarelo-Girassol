@@ -1,23 +1,27 @@
-const inputTexto = document.getElementById('enviarMensagem');   /* pega o id do input no chat.html           */
-const socket = io();                                            /* define a variavel socket como a função io */
+const inputTexto = document.getElementById('enviarMensagem');   
+const socket = io();                                            
 
-const getLocalStorage = () =>JSON.parse(localStorage.getItem('usuario')) ?? [];           /* ta pegando os usuarios do index.js e passando eles para array */
-const { usuarionome, meuid, sala } = Qs.parse(location.search, { ignoreQueryPrefix: true });    /* definindo variaveis com uns bgl esquisito                     */
+const getLocalStorage = () =>JSON.parse(localStorage.getItem('usuario')) ?? [];           
+const { usuarionome, meuid, sala } = Qs.parse(location.search, { ignoreQueryPrefix: true });    
 
 const data = JSON.parse(localStorage.getItem('usuario'));
 console.log(usuarionome, meuid, sala)
 /* -------------------------------- SAIR DA SALA -------------------------------------------- */
+
+const roomName = document.getElementById('room-name');
+const userList = document.getElementById('users');
 
 /* DEFININDO VARIAVEIS */ 
 const btnSair = document.getElementById('btnSair'); 
 
 /* FUNÇÕES */
 function saidoJogo(){
-    const sairSala = confirm('Certeza que deseja sair da sala?');   /* perguntar se tem certeza se quer sair    */
-    if (sairSala) {                                                 /* se clicar em sair                        */
-        socket.emit('sairSala');                                    /* se ele confirmar que quer sair da sala:  */
-        window.location.href='index.html';                          /* mandando o usuario ir pro index.html     */
+    const sairSala = confirm('Certeza que deseja sair da sala?');   
+    if (sairSala) {                                                 
+        socket.emit('sairSala');                                   
+        window.location.href='index.html';                         
 }}
+  
 function instasair(){                                          
     socket.emit('sairSala');                                    
     window.location.href='index.html';
@@ -32,20 +36,41 @@ btnSair.addEventListener('click', saidoJogo);
 /* INFORMA QUE O USUARIO ENTROU NA SALA */
 socket.emit('entrarSala', { usuarionome, meuid, sala});
 
+// Get room and users
+socket.on('salaUsuarios', ({ sala, usuarios }) => {
+    outputRoomName(sala);
+    outputUsers(usuarios);
+  });
+
+// Add room name to DOM
+function outputRoomName(sala) {
+    roomName.innerText = sala;
+  }
+  
+  // Add users to DOM
+  function outputUsers(usuarios) {
+    userList.innerHTML = '';
+    usuarios.forEach((usuario) => {
+      const li = document.createElement('li');
+      li.innerText = usuario.nome;
+      userList.appendChild(li);
+    });
+  }
+
 /* ADICIONA A MSG APERTANDO ENTER */
-inputTexto.addEventListener('keyup', function(e){   /* se apertar a tecla:                  */
-    var key = e.key === 'Enter';                    /* definindo o botao (enter)            */
-    if(key && this.value){                          /* se a tecla pressionada for a enter   */
-        socket.emit('mensagemChat', this.value);    /* emitir o que tava escrito            */
+inputTexto.addEventListener('keyup', function(e){   
+    var key = e.key === 'Enter';                    
+    if(key && this.value){                          
+        socket.emit('mensagemChat', this.value);    
         this.value = '';
 }});
 
 /* FUNÇAO DE ADICIONAR NOVA MENSAGEM */
-function adicionarNovaMensagem(mensagem) {                          /* recebe como parametro a mensagem                  */
-    const usuarioStorage = getLocalStorage();                       /* definir o json do usuario como uma variavel       */
-    let minhaMensagem = false;                                      /* definir a variavel minhaMensagem como false       */
-    if(mensagem.meuid) {                                            /* pegar a mensagem pelo meu id                      */
-        minhaMensagem = mensagem.meuid === usuarioStorage.meuId;    /* define minha mensagem tendo o mesmo id do usuario */
+function adicionarNovaMensagem(mensagem) {                          
+    const usuarioStorage = getLocalStorage();                       
+    let minhaMensagem = false;                                      
+    if(mensagem.meuid) {                                            
+        minhaMensagem = mensagem.meuid === usuarioStorage.meuId;    
     }
 
     /* ---------------- DEFININDO VARIAVEIS ------------------ */
@@ -87,28 +112,6 @@ function realizarScrollChat() {
 }
 
 
-/* ---------------------- LISTA DE USUARIOS -------------------------------- */
-function criarListaUsuarios(usuarioNome) {
-
-    /* ---------- DEFININDO VARIAVEIS ----------------- */
-    var listaUsuarios = document.getElementById("listaUsuarios");
-    var liUsuario = criarElementoHtml("li", ["clearfix"]);
-    var divDescricaoUsuario = criarElementoHtml('div', ["about"]);
-    var divNomeUsuario = criarElementoHtml('div', ["name"]);
-    var divStatusUsuario = criarElementoHtml('div', ["status"]);
-    var iconeStatus = criarElementoHtml("i" , ["fa", "fa-circle", "online"]);
-
-    /* ----------- CRIANDO DIVS PRO HTML -------------- */
-    iconeStatus.innerHTML = "online";
-    divNomeUsuario.innerHTML = usuarioNome;
-    divStatusUsuario.appendChild(iconeStatus);
-    divDescricaoUsuario.appendChild(divNomeUsuario);
-    divDescricaoUsuario.appendChild(divStatusUsuario);
-    liUsuario.appendChild(divDescricaoUsuario);
-    listaUsuarios.appendChild(liUsuario);
-}
-
-
 /* --------------------------- MENU RESPONSIVO --------------------------- */
 var ul = document.querySelector('nav ul');
 var menuBtn = document.querySelector('.menu-btn i');
@@ -144,7 +147,7 @@ btn.addEventListener("click",function(){
 
 /* DEFINDO VARIAVEIS */
 var btnjogadores = document.getElementById("mostrarjogadores");
-var containerjogadores = document.querySelector(".box");
+var containerjogadores = document.querySelector(".chat-container");
 
 /* FUNÇÕES */
 btnjogadores.addEventListener("click", function(){
@@ -164,13 +167,13 @@ btnjogadores.addEventListener("click",function(){
 /* DEFININDO VARIAVEIS */
 var btnembaralhar = document.getElementById("embaralhar");
 var containerembaralhar = document.querySelector(".Embaralhar");
-const cartas = ["bobo", "conselheiro", "eremita", "cavaleiro", "duque", "escriba", "monarca"];
-const primeiracarta = cartas[(Math.floor(Math.random() * (cartas.length)))];
-const segundacarta = cartas[(Math.floor(Math.random() * (cartas.length)))];
+var containerCarta1 = document.querySelector(".carta1");
+var containerCarta2 = document.querySelector(".carta2");
+const cartas = ["bobo", "conselheiro", "eremita", "cavalheiro", "duque", "escriba", "monarca"]
+const cartasUrl = ["../Imagens/Boba2.png", "../Imagens/Conselheiro.png", "../Imagens/Eremita.png", "../Imagens/Cavaleiro.png", "../Imagens/Duque.png", "../Imagens/Escriba2.png", "../Imagens/Monarca.png"]
+
 var pcarta = document.querySelector("#primeiracarta")
 var scarta = document.querySelector("#segundacarta")
-
-
 
 /* BOTAO EMBARALHAR */
 btnembaralhar.addEventListener("click", function(){
@@ -199,6 +202,16 @@ btnembaralhar.addEventListener("click", function(){
 
 /* ESCOLHENDO AS CARTAS */
 btnembaralhar.addEventListener("click", function(){
+    // Embaralhar as cartas e retiralas do deck.
+    const posicao1 = (Math.floor(Math.random() * (cartas.length)));
+    const posicao2 = (Math.floor(Math.random() * (cartas.length)));
+
+    const primeiracarta = cartas[posicao1];
+    const urlPrimeiraCarta = cartasUrl[posicao1];
+
+    const segundacarta = cartas[posicao2];
+    const urlSegundaCarta = cartasUrl[posicao2];
+    
     pcarta.innerHTML = primeiracarta;
     scarta.innerHTML = segundacarta;
     const usuarioStorage = data;
@@ -207,6 +220,9 @@ btnembaralhar.addEventListener("click", function(){
         usuarioStorage.minhaMao.push(segundacarta);
         console.log(usuarioStorage)
     }
+
+    containerCarta1.style.backgroundImage = "url(" + urlPrimeiraCarta + ")";
+    containerCarta2.style.backgroundImage = "url(" + urlSegundaCarta + ")";
 });
 
 
@@ -287,7 +303,7 @@ setInterval(()=>{
     const usuarioStorage = data;
     if(usuarioStorage.meuId){
         /* não deixa ter mais de 2 cartas ou menos de 0 */
-        if(usuarioStorage.cartas <= 0 || usuarioStorage > 2){
+        if(usuarioStorage.cartas <= 0 || usuarioStorage.cartas > 2){
             instasair();
             alert("não permitimos cheters nesse jogo !"); 
         }

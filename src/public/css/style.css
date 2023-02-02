@@ -94,13 +94,16 @@ nav .menu-btn i{
 body{
     /* background-image: linear-gradient(45deg, rgb(241, 178, 178), rgb(156, 157, 254)); */
     background-image: linear-gradient(45deg, rgb(207, 120, 120), rgb(246, 194, 131));
-    /* overflow: hidden; */
+    overflow: hidden;
 }
 
-/* CSS DOS JOGADORES NA SALA */
-.box{
+
+.chat-container {
+	background: #fff;
+	margin: 30px auto;
+	overflow: hidden;
     position: absolute;
-    top: 10%;
+    top: 7%;
     left: 63%;
     width: 500px;
     height: 600px;
@@ -108,34 +111,34 @@ body{
     border-radius: 20px;
     background-color: #ffffff;
     overflow: hidden;
+    z-index: -1;
+
 }
+
 .chat-sidebar {
 	background: var(--dark-color-b);
 	color: rgb(0, 0, 0);
-	padding: 9px 9px 9px;
+	padding: 20px 20px 60px;
 	overflow-y: scroll;
     overflow: hidden;
-    background-color: rgb(240, 173, 74);
 }
 
 .chat-sidebar h2 {
-	font-size: 30px;
+	font-size: 20px;
 	background: rgba(0, 0, 0, 0.1);
 	padding: 10px;
 	margin-bottom: 20px;
 }
 
 .chat-sidebar h3 {
-    font-size: 35px;
-    text-align: center;
 	margin-bottom: 15px;
 }
 
 .chat-sidebar ul li {
 	padding: 10px 0;
 }
+
 @media (max-width: 700px) {
-	
 	.chat-sidebar {
 		display: none;
 	}
@@ -436,59 +439,46 @@ body{
 
 
 /* css das cartas */
-.carta1{
+.carta1 {
     position: absolute;
     width: 300px;
     height: 400px;
     justify-content: center;
     align-items: center;
-    background: #434651;
+
+    /* Background */
+    background-image: url("..\\Imagens\\Boba2.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+
     overflow: hidden;
     border-radius: 20px;
     top: 56%;
     left: 23%;
     z-index: -20;
-
     display: none;
+}
 
-}
-.carta1::before{
-    content: "";
-    position: absolute;
-    width: 150px;
-    height: 140%;
-    background: linear-gradient(red, yellow);
-    animation: animate 5s linear infinite;
-}
-@keyframes animate{
-    0%{
-        transform: rotate(0deg);
-    }
-    100%{
-        transform: rotate(360deg);
-    }
-}
-.carta1::after{
-    content: '';
-    position: absolute;
-    inset: 4px;
-    background: #434651;
-    border-radius: 20px;
-}
 .carta1 p{
     position: relative;
+    text-align: center;
     color: #e8f1f3;
-    font-size: 2em;
+    font-size: 1.5em;
     z-index: 10;
 }
 
-.carta2{
+.carta2 {
     position: absolute;
     width: 300px;
     height: 400px;
     justify-content: center;
     align-items: center;
-    background: #434651;
+
+    /* Background */
+    background-image: url("..\\Imagens\\Conselheiro.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+
     overflow: hidden;
     border-radius: 20px;
     top: 56%;
@@ -496,24 +486,11 @@ body{
     z-index: -20;
     display: none;
 }
-.carta2::before{
-    content: "";
-    position: absolute;
-    width: 150px;
-    height: 140%;
-    background: linear-gradient(red, yellow);
-    animation: animate 5s linear infinite;
-}
-.carta2::after{
-    content: '';
-    position: absolute;
-    inset: 4px;
-    background: #434651;
-    border-radius: 20px;
-}
+
 .carta2 p{
     position: relative;
+    text-align: center;
     color: #e8f1f3;
-    font-size: 2em;
+    font-size: 1.5em;
     z-index: 10;
 }

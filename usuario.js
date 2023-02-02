@@ -25,9 +25,6 @@ function mensagemFormatada(usuarioNome, mensagemParam, meuid) {
     };
 } /* OK */
 
-function getUsuariosSala() {
-    return usuarios;
-}
 
 function getUsuario(idUsuario) {
     return usuarios.find(usuario => usuario.id === idUsuario);
@@ -37,9 +34,16 @@ function getRoomUsers(sala){
     return usuarios.filter(usuario => usuario.sala === sala);
 }
 
+function formatMessage(username, text) {
+    return {
+      username,
+      text,
+      time: moment().format('h:mm a')
+    };
+  }
+
 module.exports = {
     usuarioEntrarSala,
-    getUsuariosSala,
     mensagemFormatada,
     getUsuario,
     usuarioSairSala, 
