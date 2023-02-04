@@ -34,12 +34,11 @@
         </div>
 
         <ul>
-            <li onclick="iniciarjogo()"> <a href="#">iniciar jogo</a></li>
-            <li> <a href="regras.html" target="_blank"> Regras</a> </li>
-            <li> <a href="#" id="mostrarjogadores"> Jogadores</a> </li>
-            <li> <a href="#" id="mostrar"> Chat</a> </li>
-            <li> <a href="#" id="btnSair">Sair</li>
-            <li> <a href="#" id="tirarcarta"> HARDCORE </a> </li>
+            <li onclick="buttonClick()"> <a href="regras.html" target="_blank" > Regras</a> </li>
+            <li onclick="buttonClick()"> <a href="#" id="mostrarjogadores" > Jogadores</a> </li>
+            <li onclick="buttonClick()"> <a href="#" id="mostrar" > Chat</a> </li>
+            <li onclick="buttonClick()"> <a href="#" id="btnSair" >Sair</li>
+            <li onclick="buttonClick()"> <a href="#" id="tirarcarta" > HARDCORE </a> </li>
         </ul>
     </nav>
     
@@ -71,14 +70,7 @@
         </div>
     </div>
 
-<!-- LISTA DE JOGADORES -->
-    <!-- <div class="box" id="cardjogadores">
-        <div class="chat-sidebar">
-          <h3><i style="color:rgb(8, 8, 8)"></i> Usuários na sala</h3>
-          <ul id="users"></ul>
-        </div>
-    </div> -->
-    
+
     <div class="chat-container">
         <div class="chat-sidebar">
           <h3><i class="fas fa-comments"></i> Sala:</h3>
@@ -96,23 +88,21 @@
     </div>
 
     <div class="Embaralhar">
-        <button id="embaralhar" class="botaoem">EMBARALHAR</button>
+        <button id="embaralhar" class="botaoem" onclick="buttonClick() /* fazer som de embaralhar */">EMBARALHAR</button>
     </div>
     
-    <img src = "Imagens/Pataca.png" width="20%" height="20%" class = "patacas2" id = "patacasbotao" >
+    <img src = "Imagens/Pataca.png" width="20%" height="20%" class = "patacas2" id = "patacasbotao" onclick="buttonClick() /* fazer som de dinheiro */" >
 
    
 
     <div class="menuacoes">
-        <button id="Bobo" style="color:whitesmoke" class="acoes">Bobo da Corte</button>
-        <button id="Cavaleiro" style="color:whitesmoke"  class="acoes">Cavaleiro</button>
-        <button id="Conselheiro" style="color:whitesmoke" class="acoes">Conselheiro</button>
-        <button id="Duque" style="color:whitesmoke"  class="acoes">Duque</button>
-        <button id="Eremita" style="color:whitesmoke"  class="acoes">Eremita</button>
-        <button id="Escriba" style="color:whitesmoke"  class="acoes">Escriba</button>
-        <button id="Monarca" style="color:whitesmoke"  class="acoes">Monarca</button>
-
-        <button id="Contestar" style="color:whitesmoke"  class="acoes">CONTESTAR!</button>
+        <button id="Bobo" style="color:whitesmoke" class="acoes" onclick="buttonClick()">Bobo da Corte</button>
+        <button id="Cavaleiro" style="color:whitesmoke"  class="acoes" onclick="buttonClick()" >Cavaleiro</button>
+        <button id="Conselheiro" style="color:whitesmoke" class="acoes" onclick="buttonClick()">Conselheiro</button>
+        <button id="Duque" style="color:whitesmoke"  class="acoes" onclick="buttonClick()">Duque</button>
+        <button id="Eremita" style="color:whitesmoke"  class="acoes" onclick="buttonClick()">Eremita</button>
+        <button id="Escriba" style="color:whitesmoke"  class="acoes" onclick="buttonClick()">Escriba</button>
+        <button id="Monarca" style="color:whitesmoke"  class="acoes" onclick="buttonClick()">Monarca</button>
     </div>
 
   

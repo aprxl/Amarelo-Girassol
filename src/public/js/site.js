@@ -189,20 +189,6 @@ btnembaralhar.addEventListener("click", function(){
 
 /*-----------------------------MUDAR IMAGEM-------------------------------*/
 
-/*function mudarCarta(nomeCarta){
-    const cartas = ["bobo", "conselheiro", "eremita", "cavaleiro", "duque", "escriba", "monarca"];
-    const caminhos= ["../Imagens/Boba2.png", "../Imagens/Conselheiro.png", "../Imagens/Eremita.png", "../Imagens/Cavaleiro.png", "../Imagens/Duque.png", "../Imagens/Escriba2.png", "../Imagens/Monarca.png"];
-
-    let idx = cartas.indexOf(nomeCarta);
-    if(idx<0){
-        return;
-    }
-
-    const div = document.querySelector('.carta1');
-    div.style.backgroundImage = `url('${caminhos[idx]}')`;
-
-}*/
-
 /* ESCOLHENDO AS CARTAS */
 btnembaralhar.addEventListener("click", function(){
     // Embaralhar as cartas e retiralas do deck.
@@ -322,6 +308,18 @@ setInterval(()=>{
 
 excluicarta.addEventListener("click", tirarCarta);
 
+const audio = new Audio("../audio/click.mp3")
+
+function buttonClick(whichFunction) {
+    audio.play()
+  
+    if (whichFunction !== undefined) {
+      whichFunction()
+    }
+  }
+
+
+
 
 /* --------------------------- SERVIDOR ---------------------------------- */
 setInterval(() => {
@@ -342,3 +340,4 @@ socket.on('salaUsuarios', ({sala, usuarios}) => {
 socket.on('novaMensagem', (mensagem) => {
     adicionarNovaMensagem(mensagem);
 });
+
