@@ -104,9 +104,9 @@ io.on("connection", socket => {
 
             if (game.quantidade_prontos >= 2 && game.estado == state.WAITING_READY_UP) {
                 game.estado = state.PLAYING;
+
+                console.log(`A sala esta pronta para o jogo ${game.id}`);
             }
-        
-            console.log(`A sala esta pronta para o jogo ${game.id}`);
         }
 
         console.log(`Novo jogador esta pronto (${socket.id})`);
