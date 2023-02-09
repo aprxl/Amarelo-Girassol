@@ -9,9 +9,9 @@ const { usuarioEntrarSala, mensagemFormatada, getUsuario, usuarioSairSala, getRo
 //PORTA DE ENTRADA//
 const app = express();
 const server = http.createServer(app);
-const PORT = 4000 || process.env.PORT;
+const PORT = process.env.PORT || 4000;
 const io = socketIO(server);
-const local = "http://localhost:"
+const local = "http://o-feudo.herokuapp.com:"
 
 app.use(express.static(path.join(__dirname, 'src/public')));
 
