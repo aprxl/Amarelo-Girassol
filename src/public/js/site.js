@@ -310,13 +310,24 @@ excluicarta.addEventListener("click", tirarCarta);
 
 const audio = new Audio("../audio/click.mp3")
 
+const dinheiro = new Audio("../audio/Dinheiro.mp3")
+dinheiro.volume = 0.2;
+
 function buttonClick(whichFunction) {
-    audio.play()
+    audio.play();
   
     if (whichFunction !== undefined) {
-      whichFunction()
+      whichFunction();
     }
   }
+
+function somDinheiro(whichFunction){
+    dinheiro.play();
+
+    if(whichFunction !== undefined){
+        whichFunction();
+    }
+}
 
 
 

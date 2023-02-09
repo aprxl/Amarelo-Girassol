@@ -24,7 +24,7 @@ function btnEntrar() {  /* botao que faz ele ir pra sala */
 
         minhaMao: meubaralho, /* Ver quais cartas ele tem */
 
-        sala: room
+        sala: room /* Sala que o usuario ta */
     });
     
     window.location.href="chat.html?usuarionome="+ inputNome + "&meuid=" + idUsuario + "&sala=" + room; /* faz ele ir para o endereço da web com o chat.html */
