@@ -457,6 +457,12 @@ body{
     left: 23%;
     z-index: -20;
     display: none;
+    transition: top 125ms ease-in, border 125ms ease-in;
+}
+
+.carta1:hover {
+  top: 48%;
+  border: 5px solid rgba(125, 125, 125, .4);
 }
 
 .carta1 p{
@@ -485,6 +491,13 @@ body{
     left: 40%;
     z-index: -20;
     display: none;
+    transition: top 125ms ease-in, border 125ms ease-in;
+    border: none;
+}
+
+.carta2:hover {
+  top: 48%;
+  border: 5px solid rgba(125, 125, 125, .4);
 }
 
 .carta2 p{
